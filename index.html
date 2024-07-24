@@ -90,13 +90,11 @@
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
-    <!-- Audio Element for Autoplay -->
-    <audio id="xaudio" src="assets/xaudio.mp3" class="audio-hidden" autoplay></audio>
+    <audio id="audio" src="assets/xaudio.mp3" autoplay class="audio-hidden"></audio>
     <script src="assets/js/snow.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Create and play audio
-            const audio = document.getElementById('xaudio');
+            const audio = document.getElementById('audio');
             audio.play().catch(error => {
                 console.error("Audio playback failed:", error);
             });
