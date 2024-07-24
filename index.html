@@ -28,7 +28,40 @@
             height: 100vh;
             text-align: center;
         }
-        .section {
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .profile-picture {
+            border: 5px solid #555;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+        .profile-picture img {
+            width: 100%;
+            height: auto;
+        }
+        .upload-button {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .upload-button:hover {
+            background-color: #555;
+        }
+        .button-container {
             margin: 20px;
         }
         .button {
@@ -47,12 +80,6 @@
         .button:hover {
             background-color: #555;
         }
-        .ascii {
-            white-space: pre-wrap;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 14px;
-            color: #888;
-        }
         .music-player {
             margin-top: 20px;
         }
@@ -63,14 +90,17 @@
 </head>
 <body>
     <div class="container">
-        <div class="section">
-            <div class="ascii">
+        <div class="main-container">
+            <div class="profile-picture">
+                <!-- Default or selected profile picture will be shown here -->
+                <img id="profileImg" src="assets/images/default-profile.png" alt="Profile Picture">
             </div>
-        </div>
-        <div class="section">
-            <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
-            <button class="button" onclick="location.href='https://vare.dev/sexcrew'">Fraud</button>
-            <button class="button" onclick="location.href='https://coresec.lol'">Coresec</button>
+            <input type="file" id="uploadProfilePic" class="upload-button" accept="image/*" onchange="previewProfilePic(event)">
+            <div class="button-container">
+                <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
+                <button class="button" onclick="location.href='https://vare.dev/sexcrew'">Fraud</button>
+                <button class="button" onclick="location.href='https://coresec.lol'">Coresec</button>
+            </div>
         </div>
         <div class="music-player">
             <audio controls autoplay loop>
@@ -79,6 +109,16 @@
             </audio>
         </div>
     </div>
+    <script>
+        function previewProfilePic(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('profileImg');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
     <script src="assets/js/snowstorm.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
