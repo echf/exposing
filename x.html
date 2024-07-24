@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exposing.lol - home</title>
+    <title>x@exposing.lol</title>
     <meta name="theme-color" content="#000000">
     <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -85,7 +85,7 @@
             color: #ddd;
         }
         .button {
-            background-color: rgba(34, 34, 34, 0.5); /* Same transparency as profile-box */
+            background-color: rgba(34, 34, 34, 0.5);
             border: none;
             color: white;
             padding: 12px 25px;
@@ -99,7 +99,7 @@
             transition: background-color 0.3s, box-shadow 0.3s;
         }
         .button:hover {
-            background-color: rgba(34, 34, 34, 0.7); /* Slightly more opaque on hover */
+            background-color: rgba(34, 34, 34, 0.7); 
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         .enter-button {
@@ -107,7 +107,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(34, 34, 34, 0.5); /* Same transparency as profile-box */
+            background-color: rgba(34, 34, 34, 0.5); 
             border: none;
             color: white;
             padding: 15px 30px;
@@ -118,7 +118,7 @@
             z-index: 2;
         }
         .enter-button:hover {
-            background-color: rgba(34, 34, 34, 0.7); /* Slightly more opaque on hover */
+            background-color: rgba(34, 34, 34, 0.7); 
             transform: translate(-50%, -50%) scale(1.1);
         }
     </style>
@@ -131,7 +131,7 @@
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
             </div>
             <div class="profile-name">X</div>
-            <div class="profile-bio">hi.</div>
+            <div class="profile-bio">owner @ exposing.lol</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
@@ -175,7 +175,6 @@
             video.play();
             document.getElementById('enterButton').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
-            // Start the snow effect
             const script = document.createElement('script');
             script.src = 'assets/js/snow.js';
             document.body.appendChild(script);
