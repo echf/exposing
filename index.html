@@ -22,6 +22,7 @@
             justify-content: center;
             height: 100vh;
             color: white;
+            position: relative;
         }
         .background-video {
             position: fixed;
@@ -94,24 +95,29 @@
             background-color: #666;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
+        .enter-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #222;
+            border: none;
             color: white;
-            font-size: 24px;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .enter-button:hover {
+            background-color: #555;
+            transform: translate(-50%, -50%) scale(1.1);
         }
     </style>
 </head>
 <body>
-    <video src="https://cdn.discordapp.com/attachments/1240675723060973728/1265797493246001213/backround.mp4?ex=66a2d147&is=66a17fc7&hm=c20e98c94a927ee2046b1f709cd6a98ea5852fd984b34f974dd09fa1484f6d47&" playsinline loop class="background-video"></video>
-    <div class="container">
+    <video id="backgroundVideo" src="https://files.catbox.moe/dno1jk.mp4" playsinline loop class="background-video" muted></video>
+    <div class="container" id="contentContainer" style="display: none;">
         <div class="profile-box">
             <div class="profile-picture">
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
@@ -121,7 +127,7 @@
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
-    <div id="overlay" class="overlay">Enter</div>
+    <button class="enter-button" id="enterButton">Enter</button>
     <script src="assets/js/snow.js"></script>
     <script>
         const titleText = "exposing.lol - home";
@@ -129,7 +135,7 @@
         let deleting = false;
         const typingSpeed = 150;
         const deletingSpeed = 100;
-        const pauseDuration = 1000; 
+        const pauseDuration = 1000;
 
         function updateTitle() {
             if (deleting) {
@@ -154,6 +160,15 @@
                 }
             }
         }
+
+        document.getElementById('enterButton').addEventListener('click', function() {
+            const video = document.getElementById('backgroundVideo');
+            video.muted = false;
+            video.play();
+            document.getElementById('enterButton').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'block';
+        });
+
         updateTitle();
     </script>
 </body>
