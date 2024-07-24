@@ -1,101 +1,86 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>x</title>
-        <meta name="theme-color" content="#303135">
-        <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
-        <!-- Link to the snowstorm.js file -->
-        <script src="assets/js/snowstorm.js"></script>
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="box">
-            <div id="fullscreen-button">Enter</div>
-            <video autoplay muted loop id="video" style="display: none;">
-                <source src="assets/img/xw1.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted loop id="video2" style="pointer-events: none; opacity: 0.6;">
-                <source src="assets/img/xw2.mp4" type="video/mp4">
-            </video>
-            <script>
-                var video = document.getElementById('video2');
-                video.addEventListener('ended', function() {
-                    video.currentTime = 0;
-                    video.play();
-                });
-            </script>
-            <div class="content">
-                <pre class="ascii">                                            ./%@@@@@@@@@&#(,                                                                                                             
-                                                                       ,%@@@@@@@@@@@@@@@@@@@@@(.                                                                                                        
-                                                             .*#&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/                                                                                                      
-                                                        .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%,                                                                                                   
-                                                      /&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%,                                                                                                
-                                                     .,*//((((/////(&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&%(*                                                                                      
-                                                                     .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&#,                                                                                 
-                                                                      .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#,                                                                                  
-                                                                      /&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&/                                                                              
-                                                                      .(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                                                                            
-                                                                       /%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                                                                          
-                                                                        ,&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/                                                                        
-                                                                        .%&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*                                                                     
-                                                                         .#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#,                                                                  
-                                                                          ,&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,                                                                
-                                                                           /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.                                                              
-                                                                           .%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,                                                             
-                                                                             *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/                                                           
-                                                                              (@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&@@(                                                         
-                                                                              /@&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%, *@&                                                        
-                                                                                .&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,  /&.                                                      
-                                                                                  ,%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#. #(                                                      
-              .%@(.                                                               .#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                                                        
-               .&@@&*  *#,                                                         *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*                                                     
-                 .(@@@%&@#                                                          /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(                                                    
-                    .(@@@%*                                                          (&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.                                                  
-                       ./@@@@%/.                                                      (@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                                                 
-                           .#@@@@@%*.                                                  %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&/                                               
-                               .(&@@@@@&(*.                                            *&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                                             
-                                    .(&@@@@@@&#*                                        .,&%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                                            
-                                          ,/#@@@@@@@&(*.                                  . *&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%                                              
-                                                 ,#%@@@@@@@%*.                               ,&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,                                             
-                                                       ./&@@@@@&(,                            .#@@#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,,//,./.                                            
-                                                            ./&@@@@&*                            /%/&@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%,                                                  
-                                                                ./&@@@%/                          ./*/@#  /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*                                                 
-                                                                    ,%@@@%/                              .*%@@@@@%(,*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%,                                               
-                                                                      .(@@@@#*.                       .%@@@@@@@@@@@@@(.(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                                              
-                               .,,.   ./(.                        ,/(%@@@@@@@@@@%(,            .#@@@@@@@@@@@@@(* .*((%*  ,&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&/                                            
-                                /%@@@@@@@%*           ..*(#&@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@%@@@@&%#(*..*&@@@%/.      *(.    ./@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                                          
-                                    .,/#%&@@@@@@@@@@@@@@@@@&%(*,                      .*#&@@@@@@@@@@&&&@@@&###(((((/*,.       ,%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                                         
-                                               .,,,,.                                        .*/#&@@@@@@@@@@@@@@@@@@@@@@@@@@@&(/*,(&@@@@@@@@@@@@@@@@@@@@@@@@@@@@,                                       
-                                                                                                                           ,*(%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#                                      
-                                                                                                                                   .,(@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.                                    
-                                                                                                                                      /@@@@@@@@@@@@@@@@@@@@@@@@@@@&,                                    
-                                                                                                                                       (@@@@@@@@@@@@@@@@@@@@@@@@@@@@&*                                  
-                                                                                                                                        /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&(.                               
-                                                                                                                                         *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.                              
-                                                                                                                                          *@@@@@@@@@@@@@@@@@@@@@@@@@@%.#@@&,                            
-                                                                                                                                           /&@@@@@@@@@@@@@@@@@@@@@@@@@@#.                               
-                                                                                                                                            (@@@@@@#/@@@@@&&@@@@@@@@@@@@@@%(.                           
-                                                                                                                                             %@@@@@@/*@@@@&, .,%@@(/#, .*%@@@@@@&#/,                    
-                                                                                                                                              ,%@@@@%,#@@@@@/    ,(*         .*#&@@@@@@@(               
-                                                                                                                                                *&@@&/.%@@@@@/                      ...                 
-                                                                                                                                                 ./@@#  /@%.*%,                                         
-                                                                                                                                                   .%&    ,.                                            
-                                                                                                                                                                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                                                                                                                                             
-      </pre>
-                <pre class="pre2">
-                    <div class="names">
-                        <a class="name x">
-                            <a href="https://feds.lol/homophobe">X</a>
-                            <a href="https://vare.dev/sexcrew">Fraud</a>
-                            <a href="https://coresec.lol">Coresec</a>
-                    </div>
-                </pre>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <meta name="theme-color" content="#000000">
+    <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .section {
+            margin: 20px;
+        }
+        .button {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        .ascii {
+            white-space: pre-wrap;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            color: #888;
+        }
+        .music-player {
+            margin-top: 20px;
+        }
+        .music-player audio {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <div class="ascii">
+                <!-- Your ASCII Art Here -->
             </div>
-            <script src="assets/js/main.js"></script>
-    </body>
+        </div>
+        <div class="section">
+            <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
+            <button class="button" onclick="location.href='https://vare.dev/sexcrew'">Fraud</button>
+            <button class="button" onclick="location.href='https://coresec.lol'">Coresec</button>
+        </div>
+        <div class="music-player">
+            <audio controls autoplay loop>
+                <source src="assets/music/background.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <script src="assets/js/snowstorm.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
