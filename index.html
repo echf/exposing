@@ -10,33 +10,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('assets/background.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background-color: black;
             color: white;
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             overflow: hidden;
             position: relative;
-        }
-        .container {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+        }
+        .container {
             text-align: center;
         }
         .profile-box {
-            background-color: #222;
-            border-radius: 15px;
+            background-color: transparent; /* Box background is transparent */
+            border: 2px solid transparent; /* Invisible border to keep the space */
             padding: 20px;
             width: 300px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            visibility: hidden; /* Make the box invisible */
+            display: inline-block;
+            text-align: center;
         }
         .profile-picture {
             border: 5px solid #555;
@@ -53,19 +52,19 @@
         }
         .profile-name {
             margin: 10px 0;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
         }
         .profile-bio {
             margin: 10px 0;
-            font-size: 14px;
-            color: #aaa;
+            font-size: 16px;
+            color: #ccc;
         }
         .button {
             background-color: #333;
             border: none;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
