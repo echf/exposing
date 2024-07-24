@@ -1,7 +1,9 @@
+/* Existing styles */
 body {
   background-color: #000000;
   display: flex;
   justify-content: center;
+  align-items: center; /* Center content vertically */
   height: 100vh;
   overflow: hidden;
   -webkit-touch-callout: none; 
@@ -11,12 +13,6 @@ body {
   -ms-user-select: none;  
   user-select: none;
   mix-blend-mode: difference;
-}
-  
-.box {
-  align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
 #video {
@@ -52,16 +48,16 @@ body {
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
   margin-top: 10%;
 }
-  
+
 .snabela {
   color: black;
 }
-  
+
 .other {
   color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
-  
+
 .names {
   text-align: center;
   display: flex;
@@ -74,7 +70,7 @@ body {
   font-family: 'Roboto Mono', monospace;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
 }
-  
+
 #fullscreen-button {
   position: fixed;
   top: 0;
@@ -89,7 +85,7 @@ body {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px);
 }
 
 body::before {
@@ -104,7 +100,7 @@ body::before {
   background: url('../img/grain.png');
   pointer-events: none;
 }
-  
+
 .window {
   position: absolute;
   top: 50%;
@@ -119,7 +115,7 @@ body::before {
   z-index: 9999;
   overflow: hidden;
 }
- 
+
 .window-header {
   display: flex;
   justify-content: space-between;
@@ -133,11 +129,11 @@ body::before {
   font-weight: bold;
   overflow: hidden;
 }
-  
+
 .window-title {
   margin: 0;
 }
-  
+
 .window-close {
   background-color: #ffffff;
   text-align: center;
@@ -151,12 +147,12 @@ body::before {
   top: 1px;
   right: 4px;
 }
-  
+
 .window-close:active {
   box-shadow: 0.5px 0.5px 0 0.5px white, inset 1px 1px black, inset -1px -1px #c2c6ca, inset 2px 2px #85898d;
   transform: translateX(1px) translateY(1px);
 }
-  
+
 .window-content {
   font-family: "Microsoft Sans Serif", sans-serif;
   top: 20px;
@@ -166,7 +162,7 @@ body::before {
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
-  
+
 .window-content p {
   display: block;
   margin: 20px 0;
@@ -191,7 +187,7 @@ a:active {
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
-  
+
 .pre2 {
   -webkit-animation: fadein 2s;
   user-select: none;
@@ -200,17 +196,95 @@ a:active {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   animation: slide 5s linear infinite forwards;
- }
-   
+}
+
 @keyframes slide {
   0% {
-      background-position-x: 0%;
+    background-position-x: 0%;
   }
   100% {
-      background-position-x: 60vw;
+    background-position-x: 60vw;
   }
 }
 
 
-  
-   
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 1; 
+}
+
+.profile-box {
+  background-color: #222;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2; 
+}
+
+.profile-picture {
+  border: 5px solid #555;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  background-color: #333;
+  margin: 0 auto;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: auto;
+}
+
+.profile-name {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-bio {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.button {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.music-player {
+  margin-top: 20px;
+}
+
+.music-player audio {
+  width: 100%;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure canvas is behind all content */
+}
