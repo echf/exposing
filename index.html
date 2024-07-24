@@ -35,7 +35,10 @@
         }
         .container {
             text-align: center;
-            z-index: 1;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .profile-box {
             background: linear-gradient(145deg, rgba(34, 34, 34, 0.8), rgba(48, 48, 48, 0.8));
@@ -108,6 +111,7 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
+            z-index: 2;
         }
         .enter-button:hover {
             background-color: #555;
@@ -117,7 +121,7 @@
 </head>
 <body>
     <video id="backgroundVideo" src="https://cdn.discordapp.com/attachments/1240675723060973728/1265797493246001213/backround.mp4?ex=66a2d147&is=66a17fc7&hm=c20e98c94a927ee2046b1f709cd6a98ea5852fd984b34f974dd09fa1484f6d47&" playsinline loop class="background-video" muted></video>
-    <div class="container" id="contentContainer" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
@@ -166,8 +170,6 @@
             video.play();
             document.getElementById('enterButton').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
-            document.getElementById('contentContainer').style.alignItems = 'center';
-            document.getElementById('contentContainer').style.justifyContent = 'center';
             // Start the snow effect
             const script = document.createElement('script');
             script.src = 'assets/js/snow.js';
