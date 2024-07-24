@@ -37,6 +37,8 @@
             backdrop-filter: blur(10px);
             display: inline-block;
             text-align: center;
+            visibility: hidden; /* Hide the box but keep its contents */
+            position: relative;
         }
         .profile-picture {
             border: 5px solid #555;
@@ -53,7 +55,7 @@
         }
         .profile-name {
             margin: 10px 0;
-            font-size: 28px;
+            font-size: 24px; /* Reduced size */
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glowing effect */
@@ -87,6 +89,7 @@
             overflow: hidden;
             border-right: 4px solid #ffffff;
             animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+            margin-bottom: 20px;
         }
         @keyframes typing {
             from { width: 0; }
@@ -113,6 +116,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="typing-effect">exposing.lol - home</div>
         <div class="profile-box">
             <div class="profile-picture">
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
