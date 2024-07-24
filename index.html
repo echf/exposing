@@ -74,12 +74,6 @@
         .button:hover {
             background-color: #555;
         }
-        .music-player {
-            margin-top: 20px;
-        }
-        .music-player audio {
-            width: 100%;
-        }
     </style>
 </head>
 <body>
@@ -92,12 +86,7 @@
             <div class="profile-bio">hi.</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
-        <div class="music-player">
-            <audio controls autoplay loop>
-                <source src="assets/music/background.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+        <audio id="xaudio" src="/assets/audio.mp3" autoplay style="display:none"></audio>
     </div>
     <script src="assets/js/snow.js"></script> 
     <script src="assets/js/main.js"></script>
