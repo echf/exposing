@@ -108,17 +108,37 @@
     <div id="overlay" class="overlay">Enter</div>
     <script src="assets/js/snow.js"></script>
     <script>
-        // JavaScript for typing effect in the title
         const titleText = "exposing.lol - home";
         let index = 0;
-        function typeTitle() {
-            if (index < titleText.length) {
+        let deleting = false;
+        const typingSpeed = 150;
+        const deletingSpeed = 100;
+        const pauseDuration = 1000; 
+
+        function updateTitle() {
+            if (deleting) {
+                document.title = titleText.slice(0, index);
+                index--;
+                if (index < 0) {
+                    index = 0;
+                    deleting = false;
+                    setTimeout(updateTitle, pauseDuration);
+                } else {
+                    setTimeout(updateTitle, deletingSpeed);
+                }
+            } else {
                 document.title = titleText.slice(0, index + 1);
                 index++;
-                setTimeout(typeTitle, 150); // Adjust typing speed here
+                if (index > titleText.length) {
+                    index = titleText.length;
+                    deleting = true;
+                    setTimeout(updateTitle, pauseDuration);
+                } else {
+                    setTimeout(updateTitle, typingSpeed);
+                }
             }
         }
-        typeTitle();
+        updateTitle();
     </script>
 </body>
 </html>
