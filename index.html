@@ -86,10 +86,10 @@
     <div class="container">
         <div class="profile-box">
             <div class="profile-picture">
-                <img id="profileImg" src="assets/pfp.png" alt="rip">
+                <img id="profileImg" src="assets/images/default-profile.png" alt="Profile Picture">
             </div>
-            <div class="profile-name">x</div>
-            <div class="profile-bio">hi</div>
+            <div class="profile-name">X</div>
+            <div class="profile-bio">This is a short bio about X. It can include details about interests, background, or anything relevant.</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
         <div class="music-player">
@@ -99,17 +99,7 @@
             </audio>
         </div>
     </div>
-    <script>
-        function previewProfilePic(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('profileImg');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
-    <script src="assets/js/snowstorm.js"></script>
+    <script src="assets/js/snow.js"></script> 
     <script src="assets/js/main.js"></script>
 </body>
 </html>
