@@ -37,8 +37,6 @@
             backdrop-filter: blur(10px);
             display: inline-block;
             text-align: center;
-            visibility: hidden; /* Hide the box but keep its contents */
-            position: relative;
         }
         .profile-picture {
             border: 5px solid #555;
@@ -55,10 +53,10 @@
         }
         .profile-name {
             margin: 10px 0;
-            font-size: 24px; /* Reduced size */
+            font-size: 24px;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glowing effect */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         .profile-bio {
             margin: 10px 0;
@@ -81,24 +79,6 @@
         .button:hover {
             background-color: #555;
         }
-        .typing-effect {
-            font-size: 36px;
-            font-weight: 700;
-            color: #ffffff;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 4px solid #ffffff;
-            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #ffffff; }
-        }
         .overlay {
             position: fixed;
             top: 0;
@@ -116,7 +96,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="typing-effect">exposing.lol - home</div>
         <div class="profile-box">
             <div class="profile-picture">
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
@@ -128,5 +107,18 @@
     </div>
     <div id="overlay" class="overlay">Enter</div>
     <script src="assets/js/snow.js"></script>
+    <script>
+        // JavaScript for typing effect in the title
+        const titleText = "exposing.lol - home";
+        let index = 0;
+        function typeTitle() {
+            if (index < titleText.length) {
+                document.title = titleText.slice(0, index + 1);
+                index++;
+                setTimeout(typeTitle, 150); // Adjust typing speed here
+            }
+        }
+        typeTitle();
+    </script>
 </body>
 </html>
