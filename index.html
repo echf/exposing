@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>exposing.lol - home</title>
     <meta name="theme-color" content="#000000">
-    <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,9 +85,11 @@
             <div class="profile-bio">hi.</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
-        <audio id="xaudio" src="/assets/xaudio.mp3" autoplay style="display:none"></audio>
+        <!-- Test Audio Element -->
+        <audio id="test-audio" controls autoplay>
+            <source src="assets/xaudio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-    <script src="assets/js/snow.js"></script> 
-    <script src="assets/js/main.js"></script>
 </body>
 </html>
