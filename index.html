@@ -3,185 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exposing.lol - home</title>
+    <title>Coming Soon</title>
     <meta name="theme-color" content="#000000">
-    <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            color: white;
-            position: relative;
-        }
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            transition: filter 0.5s ease;
-        }
-        .blurred {
-            filter: blur(20px);
-        }
-        .container {
+            background-color: white;
+            color: black;
             text-align: center;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
-        .profile-box {
-            background: rgba(34, 34, 34, 0.5); /* Even more transparent */
-            border-radius: 15px;
-            padding: 30px;
-            width: 320px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            display: inline-block;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .message {
+            font-size: 24px;
+            font-weight: bold;
         }
-        .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
-        }
-        .profile-picture {
-            border: 5px solid rgba(85, 85, 85, 0.5);
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            background-color: #333;
-            margin: 0 auto 20px auto;
-        }
-        .profile-picture img {
-            width: 100%;
-            height: auto;
-        }
-        .profile-name {
-            margin: 10px 0;
-            font-size: 26px;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        .profile-bio {
-            margin: 10px 0;
+        .link {
+            display: block;
+            margin-top: 10px;
             font-size: 18px;
-            color: #ddd;
-        }
-        .button {
-            background-color: rgba(34, 34, 34, 0.5); /* Same transparency as profile-box */
-            border: none;
-            color: white;
-            padding: 12px 25px;
-            text-align: center;
+            color: #007bff;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, box-shadow 0.3s;
         }
-        .button:hover {
-            background-color: rgba(34, 34, 34, 0.7); /* Slightly more opaque on hover */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-        .enter-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(34, 34, 34, 0.5); /* Same transparency as profile-box */
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            z-index: 2;
-        }
-        .enter-button:hover {
-            background-color: rgba(34, 34, 34, 0.7); /* Slightly more opaque on hover */
-            transform: translate(-50%, -50%) scale(1.1);
+        .link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <video id="backgroundVideo" class="background-video blurred" src="https://cdn.discordapp.com/attachments/1240675723060973728/1265797493246001213/backround.mp4?ex=66a2d147&is=66a17fc7&hm=c20e98c94a927ee2046b1f709cd6a98ea5852fd984b34f974dd09fa1484f6d47&" playsinline loop muted></video>
-    <div class="container" id="contentContainer">
-        <div class="profile-box">
-            <div class="profile-picture">
-                <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
-            </div>
-            <div class="profile-name">X</div>
-            <div class="profile-bio">hi.</div>
-            <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
-        </div>
+    <div class="message">
+        coming soon<br>
+        for now, check out <a href="https://exposing.lol/x" class="link">https://exposing.lol/x</a>
     </div>
-    <button class="enter-button" id="enterButton">Enter</button>
-    <script>
-        const titleText = "exposing.lol - home";
-        let index = 0;
-        let deleting = false;
-        const typingSpeed = 150;
-        const deletingSpeed = 100;
-        const pauseDuration = 1000;
-
-        function updateTitle() {
-            if (deleting) {
-                document.title = titleText.slice(0, index);
-                index--;
-                if (index < 0) {
-                    index = 0;
-                    deleting = false;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, deletingSpeed);
-                }
-            } else {
-                document.title = titleText.slice(0, index + 1);
-                index++;
-                if (index > titleText.length) {
-                    index = titleText.length;
-                    deleting = true;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, typingSpeed);
-                }
-            }
-        }
-
-        document.getElementById('enterButton').addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            video.classList.remove('blurred');
-            video.muted = false;
-            video.play();
-            document.getElementById('enterButton').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            // Start the snow effect
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            document.body.appendChild(script);
-        });
-
-        updateTitle();
-    </script>
 </body>
 </html>
