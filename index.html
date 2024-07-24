@@ -28,41 +28,35 @@
             height: 100vh;
             text-align: center;
         }
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+        .profile-box {
+            background-color: #222;
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .profile-picture {
             border: 5px solid #555;
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             overflow: hidden;
             background-color: #333;
-            margin-bottom: 20px;
+            margin: 0 auto;
         }
         .profile-picture img {
             width: 100%;
             height: auto;
         }
-        .upload-button {
-            background-color: #333;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
+        .profile-name {
+            margin: 10px 0;
+            font-size: 24px;
+            font-weight: 700;
         }
-        .upload-button:hover {
-            background-color: #555;
-        }
-        .button-container {
-            margin: 20px;
+        .profile-bio {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #aaa;
         }
         .button {
             background-color: #333;
@@ -90,17 +84,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="main-container">
+        <div class="profile-box">
             <div class="profile-picture">
-                <!-- Default or selected profile picture will be shown here -->
                 <img id="profileImg" src="assets/images/default-profile.png" alt="Profile Picture">
             </div>
-            <input type="file" id="uploadProfilePic" class="upload-button" accept="image/*" onchange="previewProfilePic(event)">
-            <div class="button-container">
-                <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
-                <button class="button" onclick="location.href='https://vare.dev/sexcrew'">Fraud</button>
-                <button class="button" onclick="location.href='https://coresec.lol'">Coresec</button>
-            </div>
+            <div class="profile-name">x</div>
+            <div class="profile-bio">hi</div>
+            <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
         <div class="music-player">
             <audio controls autoplay loop>
