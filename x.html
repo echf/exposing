@@ -151,7 +151,7 @@
                 <img id="profileImg" src="assets/media/pfp.png" alt="Profile Picture">
             </div>
             <div class="profile-name">X</div>
-            <div class="profile-bio" id="profileBio"></div>
+            <div class="profile-bio">owner @ exposing.lol</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
@@ -168,8 +168,8 @@
             if (deletingTitle) {
                 document.title = titleText.slice(0, titleIndex);
                 titleIndex--;
-                if (titleIndex < 0) {
-                    titleIndex = 0;
+                if (titleIndex < 1) {
+                    titleIndex = 1;
                     deletingTitle = false;
                     setTimeout(updateTitle, pauseDuration);
                 } else {
@@ -188,35 +188,6 @@
             }
         }
 
-        const bioText = "owner @ exposing.lol";
-        let bioIndex = 0;
-        let deletingBio = false;
-
-        function updateBio() {
-            const bioElement = document.getElementById('profileBio');
-            if (deletingBio) {
-                bioElement.textContent = bioText.slice(0, bioIndex);
-                bioIndex--;
-                if (bioIndex < 0) {
-                    bioIndex = 0;
-                    deletingBio = false;
-                    setTimeout(updateBio, pauseDuration);
-                } else {
-                    setTimeout(updateBio, deletingSpeed);
-                }
-            } else {
-                bioElement.textContent = bioText.slice(0, bioIndex + 1);
-                bioIndex++;
-                if (bioIndex > bioText.length) {
-                    bioIndex = bioText.length;
-                    deletingBio = true;
-                    setTimeout(updateBio, pauseDuration);
-                } else {
-                    setTimeout(updateBio, typingSpeed);
-                }
-            }
-        }
-
         document.getElementById('enterButton').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
             video.classList.remove('blurred');
@@ -227,7 +198,6 @@
             const script = document.createElement('script');
             script.src = 'assets/js/snow.js';
             document.body.appendChild(script);
-            updateBio();
         });
 
         updateTitle();
