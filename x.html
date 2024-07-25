@@ -34,9 +34,7 @@
             object-fit: cover;
             z-index: -1;
             transition: filter 0.5s ease;
-        }
-        .blurred {
-            filter: blur(20px);
+            filter: blur(30px); 
         }
         .container {
             text-align: center;
@@ -48,8 +46,8 @@
         .profile-box {
             background: rgba(34, 34, 34, 0.7);
             border-radius: 15px;
-            padding: 30px;
-            width: 320px;
+            padding: 20px;
+            width: 250pxpx;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(15px);
             display: inline-block;
@@ -127,29 +125,19 @@
             height: 24px;
             fill: currentColor;
         }
-        .enter-button {
+        .click-to-enter {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(34, 34, 34, 0.7); 
-            border: none;
+            bottom: 20px;
+            font-size: 24px;
             color: white;
-            padding: 15px 30px;
-            font-size: 20px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
             z-index: 2;
-        }
-        .enter-button:hover {
-            background-color: rgba(34, 34, 34, 0.9); 
-            transform: translate(-50%, -50%) scale(1.1);
         }
     </style>
 </head>
 <body>
-    <video id="backgroundVideo" class="background-video blurred" src="https://cdn.discordapp.com/attachments/1232835164044918785/1266163637962276975/backround.mp4?ex=66a42647&is=66a2d4c7&hm=9d8325caab57955af5ff1c7b463d485aac87b40b354c719026c87a48addcf6d0&" playsinline loop muted></video>
+    <video id="backgroundVideo" class="background-video" src="https://cdn.discordapp.com/attachments/1232835164044918785/1266163637962276975/backround.mp4?ex=66a42647&is=66a2d4c7&hm=9d8325caab57955af5ff1c7b463d485aac87b40b354c719026c87a48addcf6d0&" playsinline loop muted></video>
     <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
@@ -176,7 +164,7 @@
             </div>
         </div>
     </div>
-    <button class="enter-button" id="enterButton">Enter</button>
+    <div class="click-to-enter" id="clickToEnter">Click to Enter</div>
     <script>
         const titleText = "owner @ exposing.lol";
         let titleIndex = 0;
@@ -209,12 +197,12 @@
             }
         }
 
-        document.getElementById('enterButton').addEventListener('click', function() {
+        document.body.addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
             video.classList.remove('blurred');
             video.muted = false;
             video.play();
-            document.getElementById('enterButton').style.display = 'none';
+            document.getElementById('clickToEnter').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
             const script = document.createElement('script');
             script.src = 'assets/js/snow.js';
