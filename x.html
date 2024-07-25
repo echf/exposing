@@ -45,7 +45,7 @@
             height: 100vh;
         }
         .profile-box {
-            background: rgba(34, 34, 34, 0.5); /* Even more transparent */
+            background: rgba(34, 34, 34, 0.5);
             border-radius: 15px;
             padding: 30px;
             width: 320px;
@@ -78,6 +78,24 @@
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+        .profile-name::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/white.gif') repeat;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            animation: sparkle 1.5s linear infinite;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
         .profile-bio {
             margin: 10px 0;
@@ -131,7 +149,7 @@
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
             </div>
             <div class="profile-name">X</div>
-            <div class="profile-bio">owner @ exposing.lol</div>
+            <div class="profile-bio" id="profileBio">owner @ exposing.lol</div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
@@ -168,6 +186,35 @@
             }
         }
 
+        const bioText = "owner @ exposing.lol";
+        let bioIndex = 0;
+        let bioDeleting = false;
+
+        function updateBio() {
+            const bioElement = document.getElementById('profileBio');
+            if (bioDeleting) {
+                bioElement.textContent = bioText.slice(0, bioIndex);
+                bioIndex--;
+                if (bioIndex < 0) {
+                    bioIndex = 0;
+                    bioDeleting = false;
+                    setTimeout(updateBio, pauseDuration);
+                } else {
+                    setTimeout(updateBio, deletingSpeed);
+                }
+            } else {
+                bioElement.textContent = bioText.slice(0, bioIndex + 1);
+                bioIndex++;
+                if (bioIndex > bioText.length) {
+                    bioIndex = bioText.length;
+                    bioDeleting = true;
+                    setTimeout(updateBio, pauseDuration);
+                } else {
+                    setTimeout(updateBio, typingSpeed);
+                }
+            }
+        }
+
         document.getElementById('enterButton').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
             video.classList.remove('blurred');
@@ -178,6 +225,7 @@
             const script = document.createElement('script');
             script.src = 'assets/js/snow.js';
             document.body.appendChild(script);
+            updateBio();
         });
 
         updateTitle();
