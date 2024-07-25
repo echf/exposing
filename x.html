@@ -1,233 +1,310 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>x@exposing.lol</title>
-    <meta name="theme-color" content="#000000">
-    <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="downfall.wiki #1 private biolink | discord.gg/pMXZ6ZzHqk" />
+    <link href="css/x.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="pfp/logo.png">
+    <title>x</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            color: white;
-            position: relative;
-            background: #000;
-        }
-        .background-video {
+        #overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            transition: filter 0.5s ease;
-        }
-        .blurred {
-            filter: blur(20px);
-        }
-        .container {
-            text-align: center;
-            display: none;
-            align-items: center;
+            background-color: rgba(0, 0, 0, 0.940);
+            display: flex;
             justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            z-index: 9999;
+            cursor: pointer;
+            opacity: 1;
+            transition: all 0.4s ease;
+        }
+
+        #overlay.hidden {
+            opacity: 0;
+        }
+
+        .diamond {
+            width: 22px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 5px white);
+        }
+
+        .verified-badge {
+            width: 22px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        .logo-badge {
+            width: 31px;
+            height: 34px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        .owner-badge {
+            width: 22px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        .booster-badge {
+            width: 22px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        .connections-badge {
+            width: 22px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        .staff-badge {
+            width: 23px;
+            height: 23px;
+            filter: drop-shadow(0 0 5px white) drop-shadow(0 0 10px white);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
         }
-        .profile-box {
-            background: rgba(34, 34, 34, 0.7);
-            border-radius: 15px;
-            padding: 30px;
-            width: 320px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            display: inline-block;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
-        }
-        .profile-picture {
-            border: 5px solid rgba(85, 85, 85, 0.5);
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
+
+        body {
+            margin: 0;
             overflow: hidden;
-            background-color: #333;
-            margin: 0 auto 20px auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
-        .profile-picture img {
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
+            pointer-events: none;
         }
-        .profile-name {
-            margin: 10px 0;
-            font-size: 26px;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+
+
+        .profile-view-count {
+            text-align: center;
+            color: #fff;
+            align-items: center;
+        }
+
+        .eye-icon {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .clickable-image img {
+            margin-top: -5.6em;
+            display: flex;
+            justify-content: center;
+        }
+
+        .clickable-image img {
+            max-width: 100%;
+            height: 23px;
+            cursor: pointer;
+            border: 0px solid #ffffff00;
+            border-radius: 30px;
+        }
+
+        .sparkles {
+            background-image: url('assets/media/white.gif');
             position: relative;
             display: inline-block;
-        }
-        .profile-name::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('assets/media/white.gif') repeat;
-            mix-blend-mode: screen;
-            pointer-events: none;
-            animation: sparkle 1.5s linear infinite;
-        }
-        @keyframes sparkle {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-        .profile-bio {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #ddd;
-        }
-        .social-icons {
-            margin: 15px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .social-icon {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 24px;
-            margin: 0 10px;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .social-icon:hover {
-            color: rgba(255, 255, 255, 1);
-            transform: scale(1.2);
-        }
-        .social-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-        .enter-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.7); 
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            cursor: pointer;
-            z-index: 2;
-            text-align: center;
-        }
-        .enter-overlay:hover {
-            color: #ffffff; 
-        }
-        .enter-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            padding-left: 6px;
+            padding-right: 6px;
+            border-radius: 5px; 
         }
     </style>
 </head>
-<body>
-    <video id="backgroundVideo" class="background-video blurred" src="https://cdn.discordapp.com/attachments/1240675723060973728/1265797493246001213/backround.mp4?ex=66a2d147&is=66a17fc7&hm=c20e98c94a927ee2046b1f709cd6a98ea5852fd984b34f974dd09fa1484f6d47&" playsinline loop muted></video>
-    <div class="container" id="contentContainer">
-        <div class="profile-box">
-            <div class="profile-picture">
-                <img id="profileImg" src="assets/media/pfp.png" alt="Profile Picture">
-            </div>
-            <div class="profile-name">x</div>
-            <div class="profile-bio">owner @ exposing.lol</div>
-            <div class="social-icons">
-                <a href="https://tiktok.com/@cybercrimes" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74a2.89 2.89 0 0 1 2.31-4.64a2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                    </svg>
-                </a>
-                <a href="https://instagram.com/x86j" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216a4.61 4.61 0 0 0-2.633-2.633a6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42a4.607 4.607 0 0 0-2.633 2.633a6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632a6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419a4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187c.043-.962.056-1.267.056-3.71c-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078a1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z"/>
-                    </svg>
-                </a>
-                <a href="https://discord.com/users/1232777898973204574" class="social-icon" aria-label="Discord" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1a14.66 14.66 0 0 0-4.58 0a10.14 10.14 0 0 0-.53-1.1a16 16 0 0 0-4.13 1.3a17.33 17.33 0 0 0-3 11.59a16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83a3.39 3.39 0 0 0 .42-.33a11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84a12.41 12.41 0 0 0 1.08 1.78a16.44 16.44 0 0 0 5.06-2.59a17.22 17.22 0 0 0-3-11.59a16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.93 1.93 0 0 1 1.8 2a1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.92 1.92 0 0 1 1.8 2a1.92 1.92 0 0 1-1.8 2z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="enter-overlay" id="enterOverlay">
-        <div class="enter-text">Click to Enter</div>
-    </div>
-    <script>
-        const titleText = "owner @ exposing.lol";
-        let titleIndex = 0;
-        let deletingTitle = false;
-        const typingSpeed = 150;
-        const deletingSpeed = 100;
-        const pauseDuration = 1000;
 
-        function updateTitle() {
-            if (deletingTitle) {
-                document.title = titleText.slice(0, titleIndex);
-                titleIndex--;
-                if (titleIndex < 1) {
-                    titleIndex = 1;
-                    deletingTitle = false;
-                    setTimeout(updateTitle, pauseDuration);
+<body
+    style="background-color: #000000; background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <div id="overlay">
+        Enter
+    </div>
+    <main>
+        <div class="container">
+            <div class="audio-bg">
+                <a id="audio-control">
+                    <svg fill='#d8d8d8' width="18px" height="18px" viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="m2 7.5v3c0 .8.6 1.5 1.4 1.5h2.3l3.2 2.8c.1.1.3.2.4.2s.2 0 .3-.1c.2-.1.4-.4.4-.7v-.9l-7.2-7.2c-.5.2-.8.8-.8 1.4zm8 2v-5.8c0-.3-.1-.5-.4-.7-.1 0-.2 0-.3 0s-.3 0-.4.2l-2.8 2.5-4.1-4.1-1 1 3.4 3.4 5.6 5.6 3.6 3.6 1-1z"
+                            fill-rule="evenodd" />
+                    </svg>
+                </a>
+                <audio id="myAudio" loop muted>
+                    <source src="audio/x.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="profile-container">
+                <div class="card">
+                    <div class="pfp">
+                        <img src="/assets/media/pfp.jpg">
+                    </div>
+                    <div class="username">
+                        <a class="sparkles">x</a>
+                    </div>
+
+                    <div class="status">
+                        <a id="typewriter" class="typewriter"></a>
+                    </div>
+
+                    <div class="clickable-image">
+                        <a href="https://discord.com/users/1232777898973204574" target="_blank">
+                            <img class="discord-s" src="assets/media/discord.png" alt="Clickable Image">
+                        </a>
+                        <a href="https://instagram.com/x86j" target="_blank">
+                            <img class="instagram-s" src="ico/instagram.png" alt="Clickable Image">
+                        </a>
+                        <a href="https://tiktok.com/@cybercrimes" target="_blank">
+                            <img class="globe-s" src="ico/tiktok.png" alt="Clickable Image">
+                        </a>
+                    </div>
+
+                    <div class="badges-container">
+                        <div class="badges">
+
+                            <div class="tooltip" data-text="Staff">
+                                <img class="staff-badge" src="ico/staff.png">
+                            </div>
+
+                            <div class="tooltip" data-text="Premium">
+                                <img class="diamond" src="ico/dia.png">
+                            </div>
+
+                            <div class="tooltip" data-text="Verfied">
+                                <img class="verified-badge" src="ico/verified.png">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="links-container">
+                        <div class="links" style="display: flex;">
+                            <div class="link" id="connection">
+                                <p>Website</p>
+                                <div class="link-content">
+                                    <h4>Telegram</h4>
+                                    <a href="https://t.me/pyarmorDC" target="_blank">
+                                        <div class="tooltip" data-text="View Link">
+                                            <svg width="20px" height="20px" viewBox="0 0 32 32"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none">
+                                                <path stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M22 3h7v7M27.5 4.5L20 12M17 5H8a3 3 0 00-3 3v16a3 3 0 003 3h16a3 3 0 003-3v-9" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <script src=""assets/js/cursor.js"></script>
+    <script src="assets/js/snow.js"></script>
+    <script>
+        const audio = document.getElementById("myAudio");
+        const audioControl = document.getElementById("audio-control");
+        const overlay = document.getElementById("overlay");
+        const card = document.querySelector(".card");
+        const viewCountElem = document.getElementById("view-count");
+
+        audio.volume = 0;
+
+        audioControl.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.muted = false;
+                audio.play();
+                audioControl.innerHTML = `<svg fill='#d8d8d8' width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="m2 7.5v3c0 .8.6 1.5 1.4 1.5h2.3l3.2 2.8c.1.1.3.2.4.2s.2 0 .3-.1c.2-.1.4-.4.4-.7v-.9l-7.2-7.2c-.5.2-.8.8-.8 1.4zm8 2v-5.8c0-.3-.1-.5-.4-.7-.1 0-.2 0-.3 0s-.3 0-.4.2l-2.8 2.5-4.1-4.1-1 1 3.4 3.4 5.6 5.6 3.6 3.6 1-1z" fill-rule="evenodd"/></svg>`;
+            } else {
+                audio.pause();
+                audioControl.innerHTML = `<svg width="18px" height="18px" viewBox="-1 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Dribbble-Light-Preview" transform="translate(-65.000000, -3803.000000)" fill="#d8d8d8"><g id="icons" transform="translate(56.000000, 160.000000)"><path d="M18.074,3650.7335 L12.308,3654.6315 C10.903,3655.5815 9,3654.5835 9,3652.8985 L9,3645.1015 C9,3643.4155 10.903,3642.4185 12.308,3643.3685 L18.074,3647.2665 C19.306,3648.0995 19.306,3649.9005 18.074,3650.7335" id="play-[#1000]"></path></g></g></g></svg>`;
+            }
+        });
+
+        overlay.addEventListener("click", () => {
+            audio.muted = false;
+            audio.play();
+            overlay.style.display = "none";
+            card.classList.add("show");
+            incrementViewCount();
+        });
+
+        function setVolume(level) {
+            if (level >= 0 && level <= 1) {
+                audio.volume = level;
+            } else {
+                console.error("Volume level must be between 0 and 1");
+            }
+        }
+
+        setVolume(1);
+
+        function incrementViewCount() {
+            let currentCount = parseInt(viewCountElem.textContent.split(' ')[0]);
+            viewCountElem.textContent = `${currentCount + 1} Views`;
+        }
+    </script>
+
+    <script>
+        var txt = 'i love little boys';
+        var speed = 95;
+        var eraseSpeed = 80;
+        var loopCount = 0;
+        var maxLoop = 0;
+        var forward = true;
+
+        function typeWriter() {
+            var typewriter = document.getElementById("typewriter");
+            var textLength = txt.length;
+
+            if (forward) {
+                if (typewriter.innerHTML.length < textLength) {
+                    typewriter.innerHTML += txt.charAt(typewriter.innerHTML.length);
+                    setTimeout(typeWriter, speed);
                 } else {
-                    setTimeout(updateTitle, deletingSpeed);
+                    forward = false;
+                    setTimeout(typeWriter, speed * 3);
                 }
             } else {
-                document.title = titleText.slice(0, titleIndex + 1);
-                titleIndex++;
-                if (titleIndex > titleText.length) {
-                    titleIndex = titleText.length;
-                    deletingTitle = true;
-                    setTimeout(updateTitle, pauseDuration);
+                if (typewriter.innerHTML.length > 0) {
+                    typewriter.innerHTML = typewriter.innerHTML.slice(0, -1);
+                    setTimeout(typeWriter, eraseSpeed);
                 } else {
-                    setTimeout(updateTitle, typingSpeed);
+                    forward = true;
+                    setTimeout(typeWriter, speed * 3);
                 }
             }
         }
 
-        document.getElementById('enterOverlay').addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            video.classList.remove('blurred');
-            video.muted = false;
-            video.play();
-            document.getElementById('enterOverlay').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            document.body.appendChild(script);
-        });
-
-        updateTitle();
+        window.onload = function () {
+            typeWriter();
+        };
     </script>
 </body>
+
 </html>
