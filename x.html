@@ -79,6 +79,7 @@
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             position: relative;
+            display: inline-block;
         }
         .profile-name::after {
             content: '';
@@ -101,6 +102,7 @@
             margin: 10px 0;
             font-size: 18px;
             color: #ddd;
+            visibility: visible;
         }
         .button {
             background-color: rgba(34, 34, 34, 0.5);
@@ -149,36 +151,36 @@
                 <img id="profileImg" src="assets/pfp.png" alt="Profile Picture">
             </div>
             <div class="profile-name">X</div>
-            <div class="profile-bio" id="profileBio">owner @ exposing.lol</div>
+            <div class="profile-bio" id="profileBio"></div>
             <button class="button" onclick="location.href='https://feds.lol/homophobe'">X</button>
         </div>
     </div>
     <button class="enter-button" id="enterButton">Enter</button>
     <script>
         const titleText = "owner @ exposing.lol";
-        let index = 0;
-        let deleting = false;
+        let titleIndex = 0;
+        let deletingTitle = false;
         const typingSpeed = 150;
         const deletingSpeed = 100;
         const pauseDuration = 1000;
 
         function updateTitle() {
-            if (deleting) {
-                document.title = titleText.slice(0, index);
-                index--;
-                if (index < 0) {
-                    index = 0;
-                    deleting = false;
+            if (deletingTitle) {
+                document.title = titleText.slice(0, titleIndex);
+                titleIndex--;
+                if (titleIndex < 0) {
+                    titleIndex = 0;
+                    deletingTitle = false;
                     setTimeout(updateTitle, pauseDuration);
                 } else {
                     setTimeout(updateTitle, deletingSpeed);
                 }
             } else {
-                document.title = titleText.slice(0, index + 1);
-                index++;
-                if (index > titleText.length) {
-                    index = titleText.length;
-                    deleting = true;
+                document.title = titleText.slice(0, titleIndex + 1);
+                titleIndex++;
+                if (titleIndex > titleText.length) {
+                    titleIndex = titleText.length;
+                    deletingTitle = true;
                     setTimeout(updateTitle, pauseDuration);
                 } else {
                     setTimeout(updateTitle, typingSpeed);
@@ -188,16 +190,16 @@
 
         const bioText = "owner @ exposing.lol";
         let bioIndex = 0;
-        let bioDeleting = false;
+        let deletingBio = false;
 
         function updateBio() {
             const bioElement = document.getElementById('profileBio');
-            if (bioDeleting) {
+            if (deletingBio) {
                 bioElement.textContent = bioText.slice(0, bioIndex);
                 bioIndex--;
                 if (bioIndex < 0) {
                     bioIndex = 0;
-                    bioDeleting = false;
+                    deletingBio = false;
                     setTimeout(updateBio, pauseDuration);
                 } else {
                     setTimeout(updateBio, deletingSpeed);
@@ -207,7 +209,7 @@
                 bioIndex++;
                 if (bioIndex > bioText.length) {
                     bioIndex = bioText.length;
-                    bioDeleting = true;
+                    deletingBio = true;
                     setTimeout(updateBio, pauseDuration);
                 } else {
                     setTimeout(updateBio, typingSpeed);
