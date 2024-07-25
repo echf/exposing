@@ -165,51 +165,47 @@
         </div>
     </div>
     <div class="click-to-enter" id="clickToEnter">Click to Enter</div>
-    <script>
-        const titleText = "owner @ exposing.lol";
-        let titleIndex = 0;
-        let deletingTitle = false;
-        const typingSpeed = 150;
-        const deletingSpeed = 100;
-        const pauseDuration = 1000;
+<script>
+    const titleText = "owner @ exposing.lol";
+    let titleIndex = 0;
+    let deletingTitle = false;
+    const typingSpeed = 150;
+    const deletingSpeed = 100;
+    const pauseDuration = 1000;
 
-        function updateTitle() {
-            if (deletingTitle) {
-                document.title = titleText.slice(0, titleIndex);
-                titleIndex--;
-                if (titleIndex < 1) {
-                    titleIndex = 1;
-                    deletingTitle = false;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, deletingSpeed);
-                }
+    function updateTitle() {
+        if (deletingTitle) {
+            document.title = titleText.slice(0, titleIndex);
+            titleIndex--;
+            if (titleIndex < 1) {
+                titleIndex = 1;
+                deletingTitle = false;
+                setTimeout(updateTitle, pauseDuration);
             } else {
-                document.title = titleText.slice(0, titleIndex + 1);
-                titleIndex++;
-                if (titleIndex > titleText.length) {
-                    titleIndex = titleText.length;
-                    deletingTitle = true;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, typingSpeed);
-                }
+                setTimeout(updateTitle, deletingSpeed);
+            }
+        } else {
+            document.title = titleText.slice(0, titleIndex + 1);
+            titleIndex++;
+            if (titleIndex > titleText.length) {
+                titleIndex = titleText.length;
+                deletingTitle = true;
+                setTimeout(updateTitle, pauseDuration);
+            } else {
+                setTimeout(updateTitle, typingSpeed);
             }
         }
+    }
 
-        document.body.addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            video.classList.remove('blurred');
-            video.muted = false;
-            video.play();
-            document.getElementById('clickToEnter').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            document.body.appendChild(script);
-        });
+    document.body.addEventListener('click', function() {
+        document.getElementById('contentContainer').style.display = 'flex';
+        document.getElementById('clickToEnter').style.display = 'none';
+        const script = document.createElement('script');
+        script.src = 'assets/js/snow.js';
+        document.body.appendChild(script);
+    });
 
-        updateTitle();
-    </script>
+    updateTitle();
+</script>
 </body>
 </html>
