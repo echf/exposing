@@ -158,33 +158,32 @@ body {
 }
 
 /* Media Queries for Mobile Responsiveness */
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .profile-box {
-        width: auto; /* Remove width to ensure it uses max-width */
-        max-width: 90%; /* Ensure the box doesn’t exceed the screen width */
-        padding: 20px;
-        margin: 0 10px; /* Add horizontal margin to prevent touching screen edges */
+        width: 90%; /* Ensure the box uses 90% of the screen width */
+        max-width: 320px; /* Restrict maximum width to keep it smaller on large screens */
+        padding: 20px; /* Adjust padding */
+        margin: 0 10px; /* Add margin to prevent touching screen edges */
     }
 
     .profile-picture {
-        width: 80px;
+        width: 80px; /* Adjust picture size */
         height: 80px;
     }
 
     .profile-name {
-        font-size: 22px;
+        font-size: 22px; /* Adjust font size */
     }
 
     .profile-bio {
-        font-size: 16px;
+        font-size: 16px; /* Adjust font size */
     }
 
     .social-icon {
-        font-size: 20px;
+        font-size: 20px; /* Adjust icon size */
     }
 
     .enter-overlay {
-        font-size: 20px;
+        font-size: 20px; /* Adjust font size */
     }
 }
