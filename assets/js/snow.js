@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('snow.js loaded'); 
+
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
@@ -8,12 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
     canvas.style.left = '0';
-    canvas.style.zIndex = '0';  // Changed zIndex to '0'
+    canvas.style.zIndex = '-1'; 
 
     const snowflakes = [];
-    const snowflakeCount = 100;
 
     function createSnowflakes() {
+        const snowflakeCount = 100;
         for (let i = 0; i < snowflakeCount; i++) {
             snowflakes.push({
                 x: Math.random() * canvas.width,
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 direction: Math.random() * 2 * Math.PI,
             });
         }
+        console.log('Snowflakes created:', snowflakes); 
     }
 
     function updateSnowflakes() {
@@ -70,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('mousemove', (e) => {
         const mouseX = e.clientX;
-        const normalizedMouseX = (mouseX / canvas.width - 0.5) * 2; // Normalized mouse position
+        const direction = (mouseX / canvas.width - 0.5) * 2;
 
         snowflakes.forEach(flake => {
-            flake.direction = normalizedMouseX * Math.PI; // Adjust direction based on mouse X position
+            flake.direction = direction * Math.PI;
         });
     });
 });
