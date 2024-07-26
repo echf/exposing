@@ -147,8 +147,6 @@
             color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             z-index: 3;
-            top: 10px;
-            right: 10px;
             display: none; /* Hidden initially */
         }
     </style>
@@ -180,20 +178,35 @@
         <div class="enter-text">Click to Enter</div>
     </div>
     <div class="exposing-lol" id="bottomLeftText">EXPOSING.LOL</div>
-    <div class="typing-title" id="typingTitle">x@exposing.lol</div>
+    <div class="typing-title" id="typingTitle"></div> <!-- Empty initially -->
     <script>
-        // Typing effect for browser tab title
         const titleElement = document.getElementById('typingTitle');
         const titleText = "x@exposing.lol";
         let titleIndex = 0;
         let titleInterval;
+        let deleting = false;
 
         function updateTitle() {
-            if (titleIndex < titleText.length) {
-                document.title = titleText.substring(0, titleIndex + 1);
-                titleIndex++;
+            if (deleting) {
+                if (titleIndex > 0) {
+                    titleElement.textContent = titleText.substring(0, titleIndex - 1);
+                    titleIndex--;
+                } else {
+                    deleting = false;
+                    setTimeout(() => {
+                        titleInterval = setInterval(updateTitle, 150);
+                    }, 500); // Pause before starting to type again
+                }
             } else {
-                clearInterval(titleInterval);
+                if (titleIndex < titleText.length) {
+                    titleElement.textContent = titleText.substring(0, titleIndex + 1);
+                    titleIndex++;
+                } else {
+                    deleting = true;
+                    setTimeout(() => {
+                        titleInterval = setInterval(updateTitle, 150);
+                    }, 500); // Pause before starting to delete
+                }
             }
         }
 
