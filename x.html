@@ -142,6 +142,18 @@
             bottom: 10px;
             left: 10px;
         }
+        .typing-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 3;
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
@@ -171,6 +183,7 @@
         <div class="enter-text">Click to Enter</div>
     </div>
     <div class="exposing-lol bottom-left" id="bottomLeftText">EXPOSING.LOL</div>
+    <div class="typing-title" id="typingTitle">Welcome to Exposing.lol</div>
     <script>
         document.getElementById('enterOverlay').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
@@ -184,10 +197,30 @@
                 document.getElementById('enterOverlay').style.display = 'none';
                 document.getElementById('contentContainer').style.display = 'flex';
                 document.getElementById('bottomLeftText').style.display = 'block';
+                document.getElementById('typingTitle').style.display = 'block';
+                typeTitle();
             } else {
                 console.error('Video element not found');
             }
         });
+
+        function typeTitle() {
+            const title = "owner@exposing.lol";
+            let index = 0;
+            const typingSpeed = 150; 
+            const typingTitleElement = document.getElementById('typingTitle');
+
+            function type() {
+                if (index < title.length) {
+                    typingTitleElement.innerHTML += title.charAt(index);
+                    index++;
+                    setTimeout(type, typingSpeed);
+                }
+            }
+
+            typingTitleElement.innerHTML = '';
+            type();
+        }
     </script>
 </body>
 </html>
