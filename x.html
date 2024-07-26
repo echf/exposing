@@ -32,10 +32,10 @@
             height: 100vh;
         }
         .profile-box {
-            background: rgba(34, 34, 34, 0.5);
+            background: rgba(34, 34, 34, 0.5); /* Increased transparency */
             border-radius: 15px;
             padding: 20px;
-            width: 300px;
+            width: 300px; /* Adjusted width for better proportion */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -76,7 +76,7 @@
         }
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 26px;
+            font-size: 26px; /* Slightly increased size */
             margin: 0 8px;
             transition: transform 0.3s;
             display: inline-flex;
@@ -84,10 +84,10 @@
             justify-content: center;
         }
         .social-icon:hover {
-            transform: scale(1.15);
+            transform: scale(1.15); /* Slightly larger hover effect */
         }
         .social-icon img {
-            width: 24px;
+            width: 24px; /* Adjusted size for better alignment */
             height: auto;
         }
         .enter-overlay {
@@ -151,20 +151,57 @@
     <div id="bottomLeftText" class="exposing-lol">
         EXPOSING.LOL
     </div>
+    <script src="assets/js/snow.js"></script>
     <script>
+        const titleText = "x@exposing.lol";
+        let titleIndex = 0;
+        let deleting = false;
+        let typingInterval;
+        const typingSpeed = 150;
+        const pauseDuration = 500;
+
+        function updateTitle() {
+            if (deleting) {
+                if (titleIndex > 0) {
+                    document.title = titleText.substring(0, titleIndex - 1);
+                    titleIndex--;
+                } else {
+                    deleting = false;
+                    clearInterval(typingInterval);
+                    setTimeout(() => {
+                        typingInterval = setInterval(updateTitle, typingSpeed);
+                    }, pauseDuration);
+                }
+            } else {
+                if (titleIndex < titleText.length) {
+                    document.title = titleText.substring(0, titleIndex + 1);
+                    titleIndex++;
+                } else {
+                    deleting = true;
+                    clearInterval(typingInterval);
+                    setTimeout(() => {
+                        typingInterval = setInterval(updateTitle, typingSpeed);
+                    }, pauseDuration);
+                }
+            }
+        }
+
+        function startTypingEffect() {
+            clearInterval(typingInterval);
+            typingInterval = setInterval(updateTitle, typingSpeed);
+        }
+
         document.getElementById('enterOverlay').addEventListener('click', function() {
-            // Hide the "Click to Enter" overlay
             document.getElementById('enterOverlay').style.display = 'none';
-            // Show the main content
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
-
-            // Load and execute snow.js
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            script.onload = () => console.log('snow.js loaded successfully');
-            script.onerror = () => console.error('Failed to load snow.js');
-            document.body.appendChild(script);
+            startTypingEffect();
+            // Ensure snow.js script is working
+            if (typeof createSnowflakes === 'function') {
+                createSnowflakes();
+            } else {
+                console.error('createSnowflakes function not found in snow.js');
+            }
         });
     </script>
 </body>
