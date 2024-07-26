@@ -167,6 +167,8 @@
                 // Load snow.js after the click event
                 const script = document.createElement('script');
                 script.src = 'assets/js/snow.js';
+                script.onload = () => console.log('snow.js loaded successfully');
+                script.onerror = () => console.error('Failed to load snow.js');
                 document.body.appendChild(script);
             } else {
                 console.error('Video element not found');
