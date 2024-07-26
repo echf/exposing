@@ -22,7 +22,6 @@
             justify-content: center;
             height: 100vh;
             color: white;
-            position: relative;
             background: #000;
         }
         .background-video {
@@ -33,7 +32,6 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            transition: filter 0.5s ease;
             filter: blur(20px);
         }
         .container {
@@ -46,24 +44,24 @@
         .profile-box {
             background: rgba(34, 34, 34, 0.7);
             border-radius: 15px;
-            padding: 30px;
-            width: 320px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
         }
         .profile-picture {
-            border: 5px solid rgba(85, 85, 85, 0.5);
+            border: 4px solid rgba(85, 85, 85, 0.5);
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             overflow: hidden;
             background-color: #333;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 15px auto;
         }
         .profile-picture img {
             width: 100%;
@@ -71,14 +69,14 @@
         }
         .profile-name {
             margin: 10px 0;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
         .profile-bio {
             margin: 10px 0;
-            font-size: 18px;
+            font-size: 16px;
             color: #ddd;
         }
         .social-icons {
@@ -88,19 +86,18 @@
         }
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 24px;
-            margin: 0 10px;
+            font-size: 20px;
+            margin: 0 8px;
             transition: transform 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
         }
         .social-icon:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
         .social-icon img {
-            width: 24px;
+            width: 20px;
             height: auto;
         }
         .enter-overlay {
@@ -112,9 +109,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             cursor: pointer;
             z-index: 2;
@@ -124,14 +121,14 @@
             color: #ffffff;
         }
         .enter-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
         .exposing-lol {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
+            bottom: 15px;
+            left: 15px;
             color: #ddd;
-            font-size: 18px;
+            font-size: 16px;
             display: none;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
