@@ -136,11 +136,9 @@
             color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             z-index: 3;
-            display: none; /* Hidden initially */
-        }
-        .exposing-lol.bottom-left {
             bottom: 10px;
             left: 10px;
+            display: none; /* Hidden initially */
         }
         .typing-title {
             position: absolute;
@@ -181,9 +179,28 @@
     <div id="enterOverlay" class="enter-overlay">
         <div class="enter-text">Click to Enter</div>
     </div>
-    <div class="exposing-lol bottom-left" id="bottomLeftText">EXPOSING.LOL</div>
+    <div class="exposing-lol" id="bottomLeftText">EXPOSING.LOL</div>
     <div class="typing-title" id="typingTitle">x@exposing.lol</div>
     <script>
+        // Typing effect for browser tab title
+        const titleElement = document.getElementById('typingTitle');
+        const titleText = "x@exposing.lol";
+        let titleIndex = 0;
+        let titleInterval;
+
+        function updateTitle() {
+            if (titleIndex < titleText.length) {
+                document.title = titleText.substring(0, titleIndex + 1);
+                titleIndex++;
+            } else {
+                clearInterval(titleInterval);
+            }
+        }
+
+        function startTypingEffect() {
+            titleInterval = setInterval(updateTitle, 150); // Adjust speed here
+        }
+
         document.getElementById('enterOverlay').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
             if (video) {
@@ -197,16 +214,11 @@
                 document.getElementById('contentContainer').style.display = 'flex';
                 document.getElementById('bottomLeftText').style.display = 'block';
                 document.getElementById('typingTitle').style.display = 'block';
-                updateTitle();
+                startTypingEffect(); // Start the typing effect
             } else {
                 console.error('Video element not found');
             }
         });
-
-        function updateTitle() {
-            const title = "x@exposing.lol";
-            document.title = title; // Set the title of the page
-        }
     </script>
 </body>
 </html>
