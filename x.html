@@ -96,13 +96,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
         .social-icon:hover {
             transform: scale(1.2);
         }
         .social-icon img {
             width: 24px;
-            height: 24px;
+            height: auto; /* Ensure aspect ratio is maintained */
         }
         .enter-overlay {
             position: absolute;
