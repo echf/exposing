@@ -21,7 +21,10 @@ body {
     object-fit: cover;
     z-index: -1;
     transition: filter 0.5s ease;
-    filter: blur(30px); /* Keep this blur effect unchanged */
+}
+
+.blurred {
+    filter: blur(30px);
 }
 
 .container {
