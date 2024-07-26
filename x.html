@@ -129,35 +129,6 @@
         .enter-text {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
-        .volume-slider {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 3;
-            background: rgba(34, 34, 34, 0.7);
-            border-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .volume-slider input[type="range"] {
-            -webkit-appearance: slider-vertical;
-            writing-mode: bt-lr; /* IE */
-            width: 8px;
-            height: 100px;
-            background: transparent;
-        }
-        .volume-slider .volume-icon {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            margin: 5px 0;
-        }
-        .volume-slider .volume-icon:hover {
-            color: rgba(255, 255, 255, 1);
-        }
         .exposing-lol {
             position: absolute;
             font-size: 18px;
@@ -166,10 +137,6 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             z-index: 3;
             display: none;
-        }
-        .exposing-lol.top-right {
-            top: 10px;
-            right: 10px;
         }
         .exposing-lol.bottom-left {
             bottom: 10px;
@@ -203,12 +170,6 @@
     <div id="enterOverlay" class="enter-overlay">
         <div class="enter-text">Click to Enter</div>
     </div>
-    <div class="volume-slider" id="volumeSlider">
-        <div class="volume-icon">+</div>
-        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
-        <div class="volume-icon">-</div>
-    </div>
-    <div class="exposing-lol top-right" id="topRightText">EXPOSING.LOL</div>
     <div class="exposing-lol bottom-left" id="bottomLeftText">EXPOSING.LOL</div>
     <script>
         document.getElementById('enterOverlay').addEventListener('click', function() {
@@ -222,16 +183,10 @@
                 });
                 document.getElementById('enterOverlay').style.display = 'none';
                 document.getElementById('contentContainer').style.display = 'flex';
-                document.getElementById('topRightText').style.display = 'block';
                 document.getElementById('bottomLeftText').style.display = 'block';
             } else {
                 console.error('Video element not found');
             }
-        });
-
-        document.getElementById('volumeControl').addEventListener('input', function(event) {
-            const volume = event.target.value;
-            document.getElementById('backgroundVideo').volume = volume;
         });
     </script>
 </body>
