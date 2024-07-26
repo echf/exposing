@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            overflow: hidden;
+            overflow: hidden; /* Keep this for the snow effect */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -30,6 +30,8 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            position: relative; /* Ensure it's above snow effect */
+            z-index: 1; /* Ensure it is clickable */
         }
         .profile-box {
             background: rgba(34, 34, 34, 0.5); /* Increased transparency */
@@ -151,7 +153,9 @@
     <div id="bottomLeftText" class="exposing-lol">
         EXPOSING.LOL
     </div>
-    <script src="assets/js/snow.js" id="snowScript" data-loaded="false"></script>
+    <script id="snowScript">
+        // Snow effect script will be dynamically loaded
+    </script>
     <script>
         const titleText = "x@exposing.lol";
         let titleIndex = 0;
@@ -191,25 +195,24 @@
             typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
+        function loadSnowScript() {
+            const script = document.createElement('script');
+            script.src = 'assets/js/snow.js';
+            script.onload = () => {
+                console.log('Snow.js loaded and executed');
+            };
+            script.onerror = () => {
+                console.error('Error loading snow.js');
+            };
+            document.body.appendChild(script);
+        }
+
         document.getElementById('enterOverlay').addEventListener('click', function() {
             document.getElementById('enterOverlay').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
             startTypingEffect();
-            // Load snow.js only after clicking
-            const snowScript = document.getElementById('snowScript');
-            if (snowScript && snowScript.dataset.loaded === 'false') {
-                const script = document.createElement('script');
-                script.src = 'assets/js/snow.js';
-                script.onload = () => {
-                    console.log('Snow.js loaded and executed');
-                    snowScript.dataset.loaded = 'true'; // Mark as loaded
-                };
-                script.onerror = () => {
-                    console.error('Error loading snow.js');
-                };
-                document.body.appendChild(script);
-            }
+            loadSnowScript(); // Load snow.js after clicking
         });
     </script>
 </body>
