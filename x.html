@@ -205,18 +205,19 @@
         }
 
         document.getElementById('enterOverlay').addEventListener('click', function() {
+            // Hide the overlay and show the content
             document.getElementById('enterOverlay').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
             startTypingEffect();
 
-            // Load and display snow effect
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            script.onload = function() {
-                console.log('snow.js loaded successfully');
-            };
-            document.body.appendChild(script);
+            // Play the video
+            const video = document.getElementById('backgroundVideo');
+            video.style.filter = 'none';
+            video.muted = false; // Unmute if needed
+            video.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
         });
     </script>
 </body>
