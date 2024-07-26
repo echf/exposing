@@ -6,9 +6,10 @@
     <title>x@exposing.lol</title>
     <meta name="theme-color" content="#000000">
     <meta property="og:image" content="https://s3.kythi.co/dev/uploads/195ed36c-b057-4d90-a30a-5a6a4c2006c9/fc9fe142-9091-48ae-99c7-221afce33675">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -24,7 +25,6 @@
             position: relative;
             background: #000;
         }
-
         .background-video {
             position: fixed;
             top: 0;
@@ -34,9 +34,10 @@
             object-fit: cover;
             z-index: -1;
             transition: filter 0.5s ease;
-            filter: blur(30px); /* Keep this blur effect unchanged */
         }
-
+        .blurred {
+            filter: blur(20px);
+        }
         .container {
             text-align: center;
             display: none;
@@ -44,49 +45,43 @@
             justify-content: center;
             height: 100vh;
         }
-
         .profile-box {
             background: rgba(34, 34, 34, 0.7);
             border-radius: 15px;
-            padding: 20px;
-            width: 250px;
+            padding: 30px;
+            width: 320px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(15px);
             display: inline-block;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .profile-box:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
         }
-
         .profile-picture {
             border: 5px solid rgba(85, 85, 85, 0.5);
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             overflow: hidden;
             background-color: #333;
             margin: 0 auto 20px auto;
         }
-
         .profile-picture img {
             width: 100%;
             height: auto;
         }
-
         .profile-name {
             margin: 10px 0;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             position: relative;
             display: inline-block;
         }
-
         .profile-name::after {
             content: '';
             position: absolute;
@@ -99,56 +94,61 @@
             pointer-events: none;
             animation: sparkle 1.5s linear infinite;
         }
-
         @keyframes sparkle {
             0% { opacity: 0; }
             50% { opacity: 1; }
             100% { opacity: 0; }
         }
-
         .profile-bio {
             margin: 10px 0;
-            font-size: 16px;
+            font-size: 18px;
             color: #ddd;
         }
-
         .social-icons {
             margin: 15px 0;
             display: flex;
             justify-content: center;
         }
-
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
-            margin: 0 8px;
+            font-size: 24px;
+            margin: 0 10px;
             transition: color 0.3s, transform 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
-
         .social-icon:hover {
             color: rgba(255, 255, 255, 1);
             transform: scale(1.2);
         }
-
         .social-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
-
-        .click-to-enter {
-            position: fixed; /* Fix position at the center */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
+        .enter-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7); 
             color: white;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+            font-size: 24px;
+            font-weight: 700;
             cursor: pointer;
             z-index: 2;
+            text-align: center;
+        }
+        .enter-overlay:hover {
+            color: #ffffff; 
+        }
+        .enter-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
     </style>
 </head>
@@ -169,24 +169,65 @@
                 </a>
                 <a href="https://instagram.com/x86j" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216a4.61 4.61 0 0 0-2.633-2.633a6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42a4.607 4.607 0 0 0-2.633 2.633a6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632a6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.709-.056a6.584 6.584 0 0 0 2.186-.45a4.607 4.607 0 0 0 2.632-2.632a6.53 6.53 0 0 0 .418-2.187c.043-.963.055-1.268.055-3.71s0-2.754-.055-3.71zM12 15.84a3.84 3.84 0 1 1 0-7.68a3.84 3.84 0 0 1 0 7.68zm4.4-8.258a.801.801 0 1 1-.001-1.603a.801.801 0 0 1 .001 1.603z"/>
+                        <path d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216a4.61 4.61 0 0 0-2.633-2.633a6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42a4.607 4.607 0 0 0-2.633 2.633a6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632a6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419a4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187c.043-.962.056-1.267.056-3.71c-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078a1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z"/>
                     </svg>
                 </a>
-                <a href="https://twitter.com/telecasted" class="social-icon" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.com/users/1232777898973204574" class="social-icon" aria-label="Discord" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M23.003 4.573c-.835.371-1.734.621-2.675.732a4.675 4.675 0 0 0 2.043-2.578a9.29 9.29 0 0 1-2.97 1.137a4.646 4.646 0 0 0-7.929 4.238a13.176 13.176 0 0 1-9.556-4.836a4.651 4.651 0 0 0 1.439 6.18a4.633 4.633 0 0 1-2.106-.58v.058a4.657 4.657 0 0 0 3.72 4.553a4.618 4.618 0 0 1-2.098.08a4.66 4.66 0 0 0 4.35 3.235a9.306 9.306 0 0 1-5.751 1.98a9.307 9.307 0 0 1-1.099-.062a13.185 13.185 0 0 0 7.142 2.093c8.573 0 13.259-7.103 13.259-13.259 0-.202-.004-.403-.014-.604a9.509 9.509 0 0 0 2.344-2.433z"/>
+                        <path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1a14.66 14.66 0 0 0-4.58 0a10.14 10.14 0 0 0-.53-1.1a16 16 0 0 0-4.13 1.3a17.33 17.33 0 0 0-3 11.59a16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83a3.39 3.39 0 0 0 .42-.33a11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84a12.41 12.41 0 0 0 1.08 1.78a16.44 16.44 0 0 0 5.06-2.59a17.22 17.22 0 0 0-3-11.59a16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.93 1.93 0 0 1 1.8 2a1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.92 1.92 0 0 1 1.8 2a1.92 1.92 0 0 1-1.8 2z"/>
                     </svg>
                 </a>
             </div>
         </div>
-        <div class="click-to-enter" id="enterText">Click anywhere to enter</div>
+    </div>
+    <div class="enter-overlay" id="enterOverlay">
+        <div class="enter-text">Click to Enter</div>
     </div>
     <script>
-        // JavaScript to handle click event on the text element
-        document.getElementById('enterText').addEventListener('click', function() {
-            document.querySelector('.container').style.display = 'flex';
-            this.style.display = 'none'; // Hide the clickable text
+        const titleText = "owner @ exposing.lol";
+        let titleIndex = 0;
+        let deletingTitle = false;
+        const typingSpeed = 150;
+        const deletingSpeed = 100;
+        const pauseDuration = 1000;
+
+        function updateTitle() {
+            if (deletingTitle) {
+                document.title = titleText.slice(0, titleIndex);
+                titleIndex--;
+                if (titleIndex < 1) {
+                    titleIndex = 1;
+                    deletingTitle = false;
+                    setTimeout(updateTitle, pauseDuration);
+                } else {
+                    setTimeout(updateTitle, deletingSpeed);
+                }
+            } else {
+                document.title = titleText.slice(0, titleIndex + 1);
+                titleIndex++;
+                if (titleIndex > titleText.length) {
+                    titleIndex = titleText.length;
+                    deletingTitle = true;
+                    setTimeout(updateTitle, pauseDuration);
+                } else {
+                    setTimeout(updateTitle, typingSpeed);
+                }
+            }
+        }
+
+        document.getElementById('enterOverlay').addEventListener('click', function() {
+            const video = document.getElementById('backgroundVideo');
+            video.classList.remove('blurred');
+            video.muted = false;
+            video.play();
+            document.getElementById('enterOverlay').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'flex';
+            const script = document.createElement('script');
+            script.src = 'assets/js/snow.js';
+            document.body.appendChild(script);
         });
+
+        updateTitle();
     </script>
 </body>
 </html>
