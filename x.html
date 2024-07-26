@@ -72,14 +72,21 @@
             height: auto;
         }
         .profile-name {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 10px 0;
             font-size: 26px;
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .badge {
+            width: 24px;
+            height: auto;
+            margin: 0 5px;
         }
         .profile-bio {
             margin: 10px 0;
@@ -107,11 +114,6 @@
         .social-icon img {
             width: 24px;
             height: auto; /* Ensure aspect ratio is maintained */
-        }
-        .badge {
-            width: 24px;
-            height: auto;
-            margin-left: 10px;
         }
         .enter-overlay {
             position: absolute;
@@ -154,8 +156,8 @@
             <div class="profile-picture">
                 <img id="profileImg" src="assets/media/pfp.png" alt="Profile Picture">
             </div>
-            <div class="profile-name">
-                x
+            <div class="profile-name">x</div>
+            <div class="badges">
                 <img class="badge" src="assets/media/owner.png" alt="Owner Badge">
                 <img class="badge" src="assets/media/dia.png" alt="Diamond Badge">
             </div>
@@ -218,23 +220,23 @@
             typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
-        document.getElementById('enterOverlay').addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            if (video) {
-                video.classList.remove('blurred');
-                video.style.filter = 'none'; // Remove blur effect
-                video.muted = false;
-                video.play().catch(error => {
-                    console.error('Error playing video:', error);
-                });
-                document.getElementById('enterOverlay').style.display = 'none';
-                document.getElementById('contentContainer').style.display = 'flex';
-                document.getElementById('bottomLeftText').style.display = 'block';
-                startTypingEffect(); // Start the typing effect
-            } else {
-                console.error('Video element not found');
-            }
-        });
+        window.onload = function () {
+            startTypingEffect();
+
+            const enterOverlay = document.getElementById('enterOverlay');
+            const contentContainer = document.getElementById('contentContainer');
+            const bottomLeftText = document.getElementById('bottomLeftText');
+
+            enterOverlay.addEventListener('click', function () {
+                enterOverlay.style.display = 'none';
+                contentContainer.style.display = 'flex';
+                bottomLeftText.style.display = 'block';
+
+                const backgroundVideo = document.getElementById('backgroundVideo');
+                backgroundVideo.play();
+                backgroundVideo.style.filter = 'blur(10px)'; // Reduce blur effect on video
+            });
+        };
     </script>
 </body>
 </html>
