@@ -153,26 +153,18 @@
     </div>
     <script>
         document.getElementById('enterOverlay').addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            if (video) {
-                video.style.filter = 'none';
-                video.muted = false;
-                video.play().catch(error => {
-                    console.error('Error playing video:', error);
-                });
-                document.getElementById('enterOverlay').style.display = 'none';
-                document.getElementById('contentContainer').style.display = 'flex';
-                document.getElementById('bottomLeftText').style.display = 'block';
+            // Hide the "Click to Enter" overlay
+            document.getElementById('enterOverlay').style.display = 'none';
+            // Show the main content
+            document.getElementById('contentContainer').style.display = 'flex';
+            document.getElementById('bottomLeftText').style.display = 'block';
 
-                // Load snow.js after the click event
-                const script = document.createElement('script');
-                script.src = 'assets/js/snow.js';
-                script.onload = () => console.log('snow.js loaded successfully');
-                script.onerror = () => console.error('Failed to load snow.js');
-                document.body.appendChild(script);
-            } else {
-                console.error('Video element not found');
-            }
+            // Load and execute snow.js
+            const script = document.createElement('script');
+            script.src = 'assets/js/snow.js';
+            script.onload = () => console.log('snow.js loaded successfully');
+            script.onerror = () => console.error('Failed to load snow.js');
+            document.body.appendChild(script);
         });
     </script>
 </body>
