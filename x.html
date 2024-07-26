@@ -42,10 +42,10 @@
             height: 100vh;
         }
         .profile-box {
-            background: rgba(34, 34, 34, 0.7);
+            background: rgba(34, 34, 34, 0.5); /* Increased transparency */
             border-radius: 15px;
             padding: 20px;
-            width: 280px;
+            width: 300px; /* Adjusted width for better proportion */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -86,7 +86,7 @@
         }
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
+            font-size: 26px; /* Slightly increased size */
             margin: 0 8px;
             transition: transform 0.3s;
             display: inline-flex;
@@ -94,10 +94,10 @@
             justify-content: center;
         }
         .social-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.15); /* Slightly larger hover effect */
         }
         .social-icon img {
-            width: 20px;
+            width: 24px; /* Adjusted size for better alignment */
             height: auto;
         }
         .enter-overlay {
@@ -201,23 +201,22 @@
             typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
-        window.onload = function () {
-            startTypingEffect();
-
-            const enterOverlay = document.getElementById('enterOverlay');
-            const contentContainer = document.getElementById('contentContainer');
-            const bottomLeftText = document.getElementById('bottomLeftText');
-
-            enterOverlay.addEventListener('click', function () {
-                enterOverlay.style.display = 'none';
-                contentContainer.style.display = 'flex';
-                bottomLeftText.style.display = 'block';
-
-                const backgroundVideo = document.getElementById('backgroundVideo');
-                backgroundVideo.play();
-                backgroundVideo.style.filter = 'blur(10px)';
-            });
-        };
+        document.getElementById('enterOverlay').addEventListener('click', function() {
+            const video = document.getElementById('backgroundVideo');
+            if (video) {
+                video.style.filter = 'none';
+                video.muted = false;
+                video.play().catch(error => {
+                    console.error('Error playing video:', error);
+                });
+                document.getElementById('enterOverlay').style.display = 'none';
+                document.getElementById('contentContainer').style.display = 'flex';
+                document.getElementById('bottomLeftText').style.display = 'block';
+                startTypingEffect();
+            } else {
+                console.error('Video element not found');
+            }
+        });
     </script>
 </body>
 </html>
