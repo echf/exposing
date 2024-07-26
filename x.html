@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            overflow: hidden; /* Keep this for the snow effect */
+            overflow: hidden; /* For the snow effect */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -30,14 +30,14 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            position: relative; /* Ensure it's above snow effect */
-            z-index: 1; /* Ensure it is clickable */
+            position: relative;
+            z-index: 1;
         }
         .profile-box {
-            background: rgba(34, 34, 34, 0.5); /* Increased transparency */
+            background: rgba(34, 34, 34, 0.5);
             border-radius: 15px;
             padding: 20px;
-            width: 300px; /* Adjusted width for better proportion */
+            width: 300px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -78,7 +78,7 @@
         }
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 26px; /* Slightly increased size */
+            font-size: 26px;
             margin: 0 8px;
             transition: transform 0.3s;
             display: inline-flex;
@@ -86,10 +86,10 @@
             justify-content: center;
         }
         .social-icon:hover {
-            transform: scale(1.15); /* Slightly larger hover effect */
+            transform: scale(1.15);
         }
         .social-icon img {
-            width: 24px; /* Adjusted size for better alignment */
+            width: 24px;
             height: auto;
         }
         .enter-overlay {
@@ -153,9 +153,6 @@
     <div id="bottomLeftText" class="exposing-lol">
         EXPOSING.LOL
     </div>
-    <script id="snowScript">
-        // Snow effect script will be dynamically loaded
-    </script>
     <script>
         const titleText = "x@exposing.lol";
         let titleIndex = 0;
@@ -195,24 +192,19 @@
             typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
-        function loadSnowScript() {
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            script.onload = () => {
-                console.log('Snow.js loaded and executed');
-            };
-            script.onerror = () => {
-                console.error('Error loading snow.js');
-            };
-            document.body.appendChild(script);
-        }
-
         document.getElementById('enterOverlay').addEventListener('click', function() {
             document.getElementById('enterOverlay').style.display = 'none';
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
             startTypingEffect();
-            loadSnowScript(); // Load snow.js after clicking
+
+            // Load and display snow effect
+            const script = document.createElement('script');
+            script.src = 'assets/js/snow.js';
+            script.onload = function() {
+                console.log('snow.js loaded successfully');
+            };
+            document.body.appendChild(script);
         });
     </script>
 </body>
