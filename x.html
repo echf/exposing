@@ -129,6 +129,28 @@
         .enter-text {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
+        .volume-slider {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 3;
+        }
+        .exposing-lol {
+            position: absolute;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 3;
+        }
+        .exposing-lol.top-right {
+            top: 10px;
+            right: 10px;
+        }
+        .exposing-lol.bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -157,9 +179,13 @@
     <div id="enterOverlay" class="enter-overlay">
         <div class="enter-text">Click to Enter</div>
     </div>
+    <div class="volume-slider">
+        <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+    </div>
+    <div class="exposing-lol top-right">EXPOSING.LOL</div>
+    <div class="exposing-lol bottom-left">EXPOSING.LOL</div>
     <script>
         document.getElementById('enterOverlay').addEventListener('click', function() {
-            console.log('Overlay clicked');
             const video = document.getElementById('backgroundVideo');
             if (video) {
                 video.classList.remove('blurred');
@@ -173,6 +199,11 @@
             } else {
                 console.error('Video element not found');
             }
+        });
+
+        document.getElementById('volumeControl').addEventListener('input', function(event) {
+            const volume = event.target.value;
+            document.getElementById('backgroundVideo').volume = volume;
         });
     </script>
 </body>
