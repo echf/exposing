@@ -140,15 +140,6 @@
             left: 10px;
             display: none; /* Hidden initially */
         }
-        .typing-title {
-            position: absolute;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            z-index: 3;
-            display: none; /* Hidden initially */
-        }
     </style>
 </head>
 <body>
@@ -178,7 +169,6 @@
         <div class="enter-text">Click to Enter</div>
     </div>
     <div class="exposing-lol" id="bottomLeftText">EXPOSING.LOL</div>
-    <div class="typing-title" id="typingTitle"></div> <!-- Empty initially -->
     <script>
         const titleElement = document.getElementById('typingTitle');
         const titleText = "x@exposing.lol";
@@ -187,9 +177,10 @@
         let deleting = false;
 
         function updateTitle() {
+            const title = document.title; // Get the current title
             if (deleting) {
                 if (titleIndex > 0) {
-                    titleElement.textContent = titleText.substring(0, titleIndex - 1);
+                    document.title = titleText.substring(0, titleIndex - 1);
                     titleIndex--;
                 } else {
                     deleting = false;
@@ -199,7 +190,7 @@
                 }
             } else {
                 if (titleIndex < titleText.length) {
-                    titleElement.textContent = titleText.substring(0, titleIndex + 1);
+                    document.title = titleText.substring(0, titleIndex + 1);
                     titleIndex++;
                 } else {
                     deleting = true;
@@ -226,7 +217,6 @@
                 document.getElementById('enterOverlay').style.display = 'none';
                 document.getElementById('contentContainer').style.display = 'flex';
                 document.getElementById('bottomLeftText').style.display = 'block';
-                document.getElementById('typingTitle').style.display = 'block';
                 startTypingEffect(); // Start the typing effect
             } else {
                 console.error('Video element not found');
