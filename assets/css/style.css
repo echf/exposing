@@ -127,10 +127,10 @@ body {
 }
 
 .click-to-enter {
-    position: fixed; /* Fix position at the bottom */
-    bottom: 20px;
+    position: fixed; /* Fix position at the center */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     font-size: 24px;
     color: white;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
