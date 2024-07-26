@@ -22,17 +22,7 @@
             justify-content: center;
             height: 100vh;
             color: white;
-            background: #000;
-        }
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: blur(20px);
+            background: #000; /* Black background */
         }
         .container {
             text-align: center;
@@ -132,10 +122,21 @@
             display: none;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
+        /* Snow effect */
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: transparent;
+        }
     </style>
 </head>
 <body>
-    <video id="backgroundVideo" class="background-video" src="https://cdn.discordapp.com/attachments/1232835164044918785/1266163637962276975/backround.mp4?ex=66a42647&is=66a2d4c7&hm=9d8325caab57955af5ff1c7b463d485aac87b40b354c719026c87a48addcf6d0&" playsinline loop muted></video>
+    <div id="snowContainer" class="snow"></div>
     <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
@@ -202,20 +203,15 @@
         }
 
         document.getElementById('enterOverlay').addEventListener('click', function() {
-            const video = document.getElementById('backgroundVideo');
-            if (video) {
-                video.style.filter = 'none';
-                video.muted = false;
-                video.play().catch(error => {
-                    console.error('Error playing video:', error);
-                });
-                document.getElementById('enterOverlay').style.display = 'none';
-                document.getElementById('contentContainer').style.display = 'flex';
-                document.getElementById('bottomLeftText').style.display = 'block';
-                startTypingEffect();
-            } else {
-                console.error('Video element not found');
-            }
+            document.getElementById('enterOverlay').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'flex';
+            document.getElementById('bottomLeftText').style.display = 'block';
+            startTypingEffect();
+
+            // Load the snow effect script
+            const script = document.createElement('script');
+            script.src = 'assets/js/snow.js';
+            document.body.appendChild(script);
         });
     </script>
 </body>
