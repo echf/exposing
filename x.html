@@ -115,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7); 
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             font-size: 24px;
             font-weight: 700;
@@ -124,7 +124,7 @@
             text-align: center;
         }
         .enter-overlay:hover {
-            color: #ffffff; 
+            color: #ffffff;
         }
         .enter-text {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
@@ -136,23 +136,22 @@
             color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             z-index: 3;
-            display: none;
+            display: none; /* Hidden initially */
         }
         .exposing-lol.bottom-left {
             bottom: 10px;
             left: 10px;
         }
         .typing-title {
+            position: absolute;
             font-size: 24px;
             font-weight: 700;
             color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             z-index: 3;
-            display: none;
-            position: absolute;
             top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 10px;
+            display: none; /* Hidden initially */
         }
     </style>
 </head>
@@ -183,7 +182,7 @@
         <div class="enter-text">Click to Enter</div>
     </div>
     <div class="exposing-lol bottom-left" id="bottomLeftText">EXPOSING.LOL</div>
-    <div class="typing-title" id="typingTitle">Welcome to Exposing.lol</div>
+    <div class="typing-title" id="typingTitle">x@exposing.lol</div>
     <script>
         document.getElementById('enterOverlay').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
@@ -198,28 +197,15 @@
                 document.getElementById('contentContainer').style.display = 'flex';
                 document.getElementById('bottomLeftText').style.display = 'block';
                 document.getElementById('typingTitle').style.display = 'block';
-                typeTitle();
+                updateTitle();
             } else {
                 console.error('Video element not found');
             }
         });
 
-        function typeTitle() {
-            const title = "owner@exposing.lol";
-            let index = 0;
-            const typingSpeed = 150; 
-            const typingTitleElement = document.getElementById('typingTitle');
-
-            function type() {
-                if (index < title.length) {
-                    typingTitleElement.innerHTML += title.charAt(index);
-                    index++;
-                    setTimeout(type, typingSpeed);
-                }
-            }
-
-            typingTitleElement.innerHTML = '';
-            type();
+        function updateTitle() {
+            const title = "x@exposing.lol";
+            document.title = title; // Set the title of the page
         }
     </script>
 </body>
