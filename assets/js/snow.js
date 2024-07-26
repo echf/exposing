@@ -1,16 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('snow.js loaded'); 
-
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.zIndex = '-1'; 
 
     const snowflakes = [];
 
@@ -25,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 direction: Math.random() * 2 * Math.PI,
             });
         }
-        console.log('Snowflakes created:', snowflakes); 
     }
 
     function updateSnowflakes() {
