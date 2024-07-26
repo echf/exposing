@@ -22,7 +22,7 @@
             justify-content: center;
             height: 100vh;
             color: white;
-            background: #000; /* Black background */
+            background: #000;
         }
         .container {
             text-align: center;
@@ -32,10 +32,10 @@
             height: 100vh;
         }
         .profile-box {
-            background: rgba(34, 34, 34, 0.5); /* Increased transparency */
+            background: rgba(34, 34, 34, 0.5);
             border-radius: 15px;
             padding: 20px;
-            width: 300px; /* Adjusted width for better proportion */
+            width: 300px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -76,7 +76,7 @@
         }
         .social-icon {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 26px; /* Slightly increased size */
+            font-size: 26px;
             margin: 0 8px;
             transition: transform 0.3s;
             display: inline-flex;
@@ -84,10 +84,10 @@
             justify-content: center;
         }
         .social-icon:hover {
-            transform: scale(1.15); /* Slightly larger hover effect */
+            transform: scale(1.15);
         }
         .social-icon img {
-            width: 24px; /* Adjusted size for better alignment */
+            width: 24px;
             height: auto;
         }
         .enter-overlay {
@@ -122,21 +122,9 @@
             display: none;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
-        /* Snow effect */
-        .snow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            background: transparent;
-        }
     </style>
 </head>
 <body>
-    <div id="snowContainer" class="snow"></div>
     <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
@@ -203,15 +191,25 @@
         }
 
         document.getElementById('enterOverlay').addEventListener('click', function() {
-            document.getElementById('enterOverlay').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            document.getElementById('bottomLeftText').style.display = 'block';
-            startTypingEffect();
+            const video = document.getElementById('backgroundVideo');
+            if (video) {
+                video.style.filter = 'none';
+                video.muted = false;
+                video.play().catch(error => {
+                    console.error('Error playing video:', error);
+                });
+                document.getElementById('enterOverlay').style.display = 'none';
+                document.getElementById('contentContainer').style.display = 'flex';
+                document.getElementById('bottomLeftText').style.display = 'block';
+                startTypingEffect();
 
-            // Load the snow effect script
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            document.body.appendChild(script);
+                // Load snow.js after the click event
+                const script = document.createElement('script');
+                script.src = 'assets/js/snow.js';
+                document.body.appendChild(script);
+            } else {
+                console.error('Video element not found');
+            }
         });
     </script>
 </body>
