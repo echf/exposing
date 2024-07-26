@@ -34,9 +34,7 @@
             object-fit: cover;
             z-index: -1;
             transition: filter 0.5s ease;
-        }
-        .blurred {
-            filter: blur(20px);
+            filter: blur(20px); /* Initial blur effect */
         }
         .container {
             text-align: center;
@@ -79,25 +77,6 @@
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            position: relative;
-            display: inline-block;
-        }
-        .profile-name::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('assets/media/white.gif') repeat;
-            mix-blend-mode: screen;
-            pointer-events: none;
-            animation: sparkle 1.5s linear infinite;
-        }
-        @keyframes sparkle {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
         }
         .profile-bio {
             margin: 10px 0;
@@ -153,7 +132,7 @@
     </style>
 </head>
 <body>
-    <video id="backgroundVideo" class="background-video blurred" src="https://cdn.discordapp.com/attachments/1232835164044918785/1266163637962276975/backround.mp4?ex=66a42647&is=66a2d4c7&hm=9d8325caab57955af5ff1c7b463d485aac87b40b354c719026c87a48addcf6d0&" playsinline loop muted></video>
+    <video id="backgroundVideo" class="background-video" src="https://cdn.discordapp.com/attachments/1232835164044918785/1266163637962276975/backround.mp4?ex=66a42647&is=66a2d4c7&hm=9d8325caab57955af5ff1c7b463d485aac87b40b354c719026c87a48addcf6d0&" playsinline loop muted></video>
     <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
@@ -169,65 +148,32 @@
                 </a>
                 <a href="https://instagram.com/x86j" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216a4.61 4.61 0 0 0-2.633-2.633a6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42a4.607 4.607 0 0 0-2.633 2.633a6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632a6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419a4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187c.043-.962.056-1.267.056-3.71c-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078a1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z"/>
-                    </svg>
-                </a>
-                <a href="https://discord.com/users/1232777898973204574" class="social-icon" aria-label="Discord" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                        <path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1a14.66 14.66 0 0 0-4.58 0a10.14 10.14 0 0 0-.53-1.1a16 16 0 0 0-4.13 1.3a17.33 17.33 0 0 0-3 11.59a16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83a3.39 3.39 0 0 0 .42-.33a11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84a12.41 12.41 0 0 0 1.08 1.78a16.44 16.44 0 0 0 5.06-2.59a17.22 17.22 0 0 0-3-11.59a16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.93 1.93 0 0 1 1.8 2a1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.92 1.92 0 0 1 1.8 2a1.92 1.92 0 0 1-1.8 2z"/>
+                        <path d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216a4.61 4.61 0 0 0-2.633-2.633a6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42a4.607 4.607 0 0 0-2.633 2.633a6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632a6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419a4.615 4.615 0 0 0 2.633-2.633c.263-.7.39-1.439.43-2.187c.042-.963.055-1.268.055-3.71s-.013-2.746-.055-3.709a6.53 6.53 0 0 0-.449-2.223zm-8.947 5.454a3.859 3.859 0 1 1 0-7.718a3.859 3.859 0 0 1 0 7.718zm4.756-6.812a.918.918 0 1 1 0-1.836a.918.918 0 0 1 0 1.836zm-1.56 1.152a2.654 2.654 0 1 0-5.308 0a2.654 2.654 0 0 0 5.308 0z"/>
                     </svg>
                 </a>
             </div>
         </div>
     </div>
-    <div class="enter-overlay" id="enterOverlay">
+    <div id="enterOverlay" class="enter-overlay">
         <div class="enter-text">Click to Enter</div>
     </div>
     <script>
-        const titleText = "owner @ exposing.lol";
-        let titleIndex = 0;
-        let deletingTitle = false;
-        const typingSpeed = 150;
-        const deletingSpeed = 100;
-        const pauseDuration = 1000;
-
-        function updateTitle() {
-            if (deletingTitle) {
-                document.title = titleText.slice(0, titleIndex);
-                titleIndex--;
-                if (titleIndex < 1) {
-                    titleIndex = 1;
-                    deletingTitle = false;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, deletingSpeed);
-                }
-            } else {
-                document.title = titleText.slice(0, titleIndex + 1);
-                titleIndex++;
-                if (titleIndex > titleText.length) {
-                    titleIndex = titleText.length;
-                    deletingTitle = true;
-                    setTimeout(updateTitle, pauseDuration);
-                } else {
-                    setTimeout(updateTitle, typingSpeed);
-                }
-            }
-        }
-
         document.getElementById('enterOverlay').addEventListener('click', function() {
+            console.log('Overlay clicked');
             const video = document.getElementById('backgroundVideo');
-            video.classList.remove('blurred');
-            video.muted = false;
-            video.play();
-            document.getElementById('enterOverlay').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            const script = document.createElement('script');
-            script.src = 'assets/js/snow.js';
-            document.body.appendChild(script);
+            if (video) {
+                video.classList.remove('blurred');
+                video.style.filter = 'none'; // Remove blur effect
+                video.muted = false;
+                video.play().catch(error => {
+                    console.error('Error playing video:', error);
+                });
+                document.getElementById('enterOverlay').style.display = 'none';
+                document.getElementById('contentContainer').style.display = 'flex';
+            } else {
+                console.error('Video element not found');
+            }
         });
-
-        updateTitle();
     </script>
 </body>
 </html>
