@@ -152,44 +152,6 @@
         EXPOSING.LOL
     </div>
     <script>
-        const titleText = "x@exposing.lol";
-        let titleIndex = 0;
-        let deleting = false;
-        let typingInterval;
-        const typingSpeed = 150;
-        const pauseDuration = 500;
-
-        function updateTitle() {
-            if (deleting) {
-                if (titleIndex > 0) {
-                    document.title = titleText.substring(0, titleIndex - 1);
-                    titleIndex--;
-                } else {
-                    deleting = false;
-                    clearInterval(typingInterval);
-                    setTimeout(() => {
-                        typingInterval = setInterval(updateTitle, typingSpeed);
-                    }, pauseDuration);
-                }
-            } else {
-                if (titleIndex < titleText.length) {
-                    document.title = titleText.substring(0, titleIndex + 1);
-                    titleIndex++;
-                } else {
-                    deleting = true;
-                    clearInterval(typingInterval);
-                    setTimeout(() => {
-                        typingInterval = setInterval(updateTitle, typingSpeed);
-                    }, pauseDuration);
-                }
-            }
-        }
-
-        function startTypingEffect() {
-            clearInterval(typingInterval);
-            typingInterval = setInterval(updateTitle, typingSpeed);
-        }
-
         document.getElementById('enterOverlay').addEventListener('click', function() {
             const video = document.getElementById('backgroundVideo');
             if (video) {
@@ -201,7 +163,6 @@
                 document.getElementById('enterOverlay').style.display = 'none';
                 document.getElementById('contentContainer').style.display = 'flex';
                 document.getElementById('bottomLeftText').style.display = 'block';
-                startTypingEffect();
 
                 // Load snow.js after the click event
                 const script = document.createElement('script');
