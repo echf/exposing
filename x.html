@@ -72,6 +72,9 @@
             height: auto;
         }
         .profile-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 10px 0;
             font-size: 26px;
             font-weight: 700;
@@ -104,6 +107,11 @@
         .social-icon img {
             width: 24px;
             height: auto; /* Ensure aspect ratio is maintained */
+        }
+        .badge {
+            width: 24px;
+            height: auto;
+            margin-left: 10px;
         }
         .enter-overlay {
             position: absolute;
@@ -146,7 +154,11 @@
             <div class="profile-picture">
                 <img id="profileImg" src="assets/media/pfp.png" alt="Profile Picture">
             </div>
-            <div class="profile-name">x</div>
+            <div class="profile-name">
+                x
+                <img class="badge" src="assets/media/owner.png" alt="Owner Badge">
+                <img class="badge" src="assets/media/dia.png" alt="Diamond Badge">
+            </div>
             <div class="profile-bio">owner @ exposing.lol</div>
             <div class="social-icons">
                 <a href="https://tiktok.com/@cybercrimes" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
