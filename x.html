@@ -23,6 +23,17 @@
             height: 100vh;
             color: white;
             background: #000;
+            position: relative; /* Ensure the background video sits behind the content */
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Ensure it's behind everything */
+            filter: blur(0); /* No blur effect */
         }
         .container {
             text-align: center;
@@ -127,6 +138,7 @@
     </style>
 </head>
 <body>
+    <video id="backgroundVideo" class="background-video" src="assets/media/wow.mp4" playsinline loop muted></video>
     <div class="container" id="contentContainer">
         <div class="profile-box">
             <div class="profile-picture">
