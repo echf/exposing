@@ -115,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.7); 
             color: white;
             font-size: 24px;
             font-weight: 700;
@@ -124,21 +124,19 @@
             text-align: center;
         }
         .enter-overlay:hover {
-            color: #ffffff;
+            color: #ffffff; 
         }
         .enter-text {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         .exposing-lol {
             position: absolute;
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            z-index: 3;
             bottom: 10px;
             left: 10px;
-            display: none; /* Hidden initially */
+            color: #ddd;
+            font-size: 18px;
+            display: none;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
@@ -168,25 +166,28 @@
     <div id="enterOverlay" class="enter-overlay">
         <div class="enter-text">Click to Enter</div>
     </div>
-    <div class="exposing-lol" id="bottomLeftText">EXPOSING.LOL</div>
+    <div id="bottomLeftText" class="exposing-lol">
+        EXPOSING.LOL
+    </div>
     <script>
-        const titleElement = document.getElementById('typingTitle');
         const titleText = "x@exposing.lol";
         let titleIndex = 0;
-        let titleInterval;
         let deleting = false;
+        let typingInterval;
+        const typingSpeed = 150; // Speed of typing effect
+        const pauseDuration = 500; // Pause duration before starting to delete or type
 
         function updateTitle() {
-            const title = document.title; // Get the current title
             if (deleting) {
                 if (titleIndex > 0) {
                     document.title = titleText.substring(0, titleIndex - 1);
                     titleIndex--;
                 } else {
                     deleting = false;
+                    clearInterval(typingInterval); // Stop current interval
                     setTimeout(() => {
-                        titleInterval = setInterval(updateTitle, 150);
-                    }, 500); // Pause before starting to type again
+                        typingInterval = setInterval(updateTitle, typingSpeed);
+                    }, pauseDuration); // Pause before starting to type again
                 }
             } else {
                 if (titleIndex < titleText.length) {
@@ -194,15 +195,17 @@
                     titleIndex++;
                 } else {
                     deleting = true;
+                    clearInterval(typingInterval); // Stop current interval
                     setTimeout(() => {
-                        titleInterval = setInterval(updateTitle, 150);
-                    }, 500); // Pause before starting to delete
+                        typingInterval = setInterval(updateTitle, typingSpeed);
+                    }, pauseDuration); // Pause before starting to delete
                 }
             }
         }
 
         function startTypingEffect() {
-            titleInterval = setInterval(updateTitle, 150); // Adjust speed here
+            clearInterval(typingInterval); // Ensure no previous interval is running
+            typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
         document.getElementById('enterOverlay').addEventListener('click', function() {
