@@ -151,7 +151,7 @@
     <div id="bottomLeftText" class="exposing-lol">
         EXPOSING.LOL
     </div>
-    <script src="assets/js/snow.js"></script>
+    <script src="assets/js/snow.js" id="snowScript" data-loaded="false"></script>
     <script>
         const titleText = "x@exposing.lol";
         let titleIndex = 0;
@@ -196,11 +196,19 @@
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
             startTypingEffect();
-            // Ensure snow.js script is working
-            if (typeof createSnowflakes === 'function') {
-                createSnowflakes();
-            } else {
-                console.error('createSnowflakes function not found in snow.js');
+            // Load snow.js only after clicking
+            const snowScript = document.getElementById('snowScript');
+            if (snowScript && snowScript.dataset.loaded === 'false') {
+                const script = document.createElement('script');
+                script.src = 'assets/js/snow.js';
+                script.onload = () => {
+                    console.log('Snow.js loaded and executed');
+                    snowScript.dataset.loaded = 'true'; // Mark as loaded
+                };
+                script.onerror = () => {
+                    console.error('Error loading snow.js');
+                };
+                document.body.appendChild(script);
             }
         });
     </script>
