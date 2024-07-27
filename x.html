@@ -91,13 +91,15 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 26px;
             margin: 0 8px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add initial glow */
         }
         .social-icon:hover {
             transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Increase glow on hover */
         }
         .social-icon img {
             width: 24px;
