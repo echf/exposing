@@ -26,7 +26,7 @@
             position: relative; 
         }
         .background-video {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -220,20 +220,6 @@
             typingInterval = setInterval(updateTitle, typingSpeed);
         }
 
-        document.getElementById('enterOverlay').addEventListener('click', function() {
-            document.getElementById('enterOverlay').style.display = 'none';
-            document.getElementById('contentContainer').style.display = 'flex';
-            document.getElementById('bottomLeftText').style.display = 'block';
-            startTypingEffect();
-
-            const video = document.getElementById('backgroundVideo');
-            video.style.filter = 'none';
-            video.muted = false; 
-            video.play().catch(error => {
-                console.error('Error playing video:', error);
-            });
-        });
-
         function fairyDustCursor(options) {
             let possibleColors = (options && options.colors) || ["#FFFFFF", "#FFFFFF", "#FFFFFF"];
             let hasWrapperEl = options && options.element;
@@ -241,7 +227,6 @@
 
             let width = window.innerWidth;
             let height = window.innerHeight;
-            const cursor = { x: width / 2, y: width / 2 };
             const lastPos = { x: width / 2, y: width / 2 };
             const particles = [];
             const canvImages = [];
@@ -427,14 +412,26 @@
                 window.removeEventListener("resize", onWindowResize);
             }
 
-            init();
-
             return {
                 destroy: destroy,
             };
         }
 
-        fairyDustCursor({ colors: ["#FFFFFF", "#FFFFFF", "#FFFFFF"] });
+        document.getElementById('enterOverlay').addEventListener('click', function() {
+            document.getElementById('enterOverlay').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'flex';
+            document.getElementById('bottomLeftText').style.display = 'block';
+            startTypingEffect();
+
+            const video = document.getElementById('backgroundVideo');
+            video.style.filter = 'none';
+            video.muted = false; 
+            video.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
+
+            fairyDustCursor({ colors: ["#FFFFFF", "#FFFFFF", "#FFFFFF"] });
+        });
     </script>
 </body>
 </html>
