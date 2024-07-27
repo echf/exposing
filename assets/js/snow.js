@@ -1,8 +1,8 @@
+// snow.js
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.style.zIndex = '-1'; // Ensure it's behind other content
 
     const snowflakes = [];
-    const numSnowflakes = 100; // Define a number for consistency
 
     function createSnowflakes() {
-        for (let i = 0; i < numSnowflakes; i++) {
+        for (let i = 0; i < 100; i++) {
             snowflakes.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
@@ -47,11 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawSnowflakes() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'white';
-        ctx.beginPath();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+
         snowflakes.forEach(flake => {
-            ctx.arc(flake.x, flake.y, flake.radius, 0, 2 * Math.PI);
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
         });
-        ctx.fill();
     }
 
     function animate() {
