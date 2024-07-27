@@ -44,6 +44,7 @@
             position: relative;
             z-index: 1;
             overflow: hidden;
+            display: none; /* Initially hidden */
         }
         .profile-box {
             background: rgba(34, 34, 34, 0.5);
@@ -185,11 +186,6 @@
     </div>
     <script src="assets/js/snow.js"></script> <!-- Include snow.js -->
     <script>
-        // Initialize the snow effect
-        window.addEventListener('load', () => {
-            snowEffect();
-        });
-
         function fairyDustCursor() {
             const cursor = document.createElement('div');
             cursor.style.position = 'absolute';
@@ -283,7 +279,6 @@
             document.getElementById('contentContainer').style.display = 'flex';
             document.getElementById('bottomLeftText').style.display = 'block';
             fairyDustCursor();
-            startTypingEffect();
 
             const video = document.getElementById('backgroundVideo');
             video.style.filter = 'none';
@@ -291,6 +286,11 @@
             video.play().catch(error => {
                 console.error('Error playing video:', error);
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            snowEffect(); // Call the snow effect function from snow.js
+            fairyDustCursor(); // Initialize fairy dust cursor effect
         });
     </script>
 </body>
