@@ -157,6 +157,7 @@
 </head>
 <body>
     <video id="backgroundVideo" class="background-video" src="assets/media/wow.mp4" playsinline loop muted></video>
+    <audio id="enterAudio" src="assets/media/enter.mp3"></audio> <!-- Added audio element -->
     <div id="snowContainer"></div> <!-- Snow effect container -->
     <div class="container" id="contentContainer">
         <div class="profile-box">
@@ -284,6 +285,11 @@
             video.muted = false; 
             video.play().catch(error => {
                 console.error('Error playing video:', error);
+            });
+
+            const audio = document.getElementById('enterAudio');
+            audio.play().catch(error => {
+                console.error('Error playing audio:', error);
             });
         });
 
