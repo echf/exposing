@@ -50,14 +50,11 @@
             background: rgba(34, 34, 34, 0.5);
             border-radius: 15px;
             padding: 20px;
-            width: 500px; /* Adjusted width */
+            width: 400px; /* Increased width */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
             margin: auto;
-            display: flex;
-            align-items: center; /* Align items in the center */
-            text-align: left; /* Align text to the left */
         }
         .profile-box:hover {
             transform: translateY(-5px);
@@ -70,14 +67,11 @@
             height: 80px;
             overflow: hidden;
             background-color: #333;
-            margin-right: 15px; /* Space between picture and text */
+            margin: 0 auto 15px auto;
         }
         .profile-picture img {
             width: 100%;
             height: auto;
-        }
-        .profile-details {
-            flex-grow: 1; /* Allows details to take the remaining space */
         }
         .profile-name {
             margin: 10px 0;
@@ -128,16 +122,6 @@
             width: 32px; /* Increased size */
             height: auto;
         }
-        .badges {
-            margin: 10px 0;
-            display: flex;
-            flex-wrap: wrap; /* Allow badges to wrap */
-            gap: 10px; /* Space between badges */
-        }
-        .badge {
-            width: 50px;
-            height: auto;
-        }
         .enter-overlay {
             position: absolute;
             top: 0;
@@ -179,24 +163,18 @@
             <div class="profile-picture">
                 <img id="profileImg" src="assets/media/pfp.png" alt="Profile Picture">
             </div>
-            <div class="profile-details">
-                <div class="profile-name">x</div>
-                <div class="profile-bio">owner @ exposing.lol</div>
-                <div class="badges">
-                    <img src="assets/media/owner.png" alt="Owner Badge" class="badge">
-                    <!-- Add more badges as needed -->
-                </div>
-                <div class="social-icons">
-                    <a href="https://tiktok.com/@cybercrimes" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/media/tiktok.png" alt="TikTok">
-                    </a>
-                    <a href="https://instagram.com/x86j" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/media/instagram.png" alt="Instagram">
-                    </a>
-                    <a href="https://discord.com/users/1232777898973204574" class="social-icon" aria-label="Discord" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/media/discord.png" alt="Discord">
-                    </a>
-                </div>
+            <div class="profile-name">x</div>
+            <div class="profile-bio">owner @ exposing.lol</div>
+            <div class="social-icons">
+                <a href="https://tiktok.com/@cybercrimes" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/media/tiktok.png" alt="TikTok">
+                </a>
+                <a href="https://instagram.com/x86j" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/media/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://discord.com/users/1232777898973204574" class="social-icon" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/media/discord.png" alt="Discord">
+                </a>
             </div>
         </div>
     </div>
@@ -251,23 +229,4 @@
                 particles.forEach(p => {
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-                    ctx.fill();
-                });
-
-                setTimeout(() => {
-                    document.body.removeChild(canvas);
-                }, 100);
-            }, 100);
-        }
-
-        fairyDustCursor();
-
-        document.getElementById('enterOverlay').addEventListener('click', function() {
-            document.getElementById('contentContainer').style.display = 'flex';
-            document.getElementById('enterOverlay').style.display = 'none';
-            document.getElementById('backgroundVideo').play();
-        });
-    </script>
-</body>
-</html>
+                    ctx.fillStyle =
