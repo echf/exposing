@@ -198,8 +198,8 @@
             document.body.appendChild(cursor);
 
             document.addEventListener('mousemove', (e) => {
-                cursor.style.left = `${e.clientX}px`;
-                cursor.style.top = `${e.clientY}px`;
+                cursor.style.left = ${e.clientX}px;
+                cursor.style.top = ${e.clientY}px;
             });
 
             let particles = [];
@@ -229,4 +229,69 @@
                 particles.forEach(p => {
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fillStyle =
+                    ctx.fillStyle = rgba(255, 255, 255, ${p.alpha});
+                    ctx.fill();
+                });
+                document.body.removeChild(canvas);
+            }, 50);
+        }
+
+        function startTypingEffect() {
+            const titleText = "x@exposing.lol";
+            let titleIndex = 0;
+            let deleting = false;
+            let typingInterval;
+            const typingSpeed = 150;
+            const pauseDuration = 500;
+
+            function updateTitle() {
+                if (deleting) {
+                    if (titleIndex > 0) {
+                        document.title = titleText.substring(0, titleIndex - 1);
+                        titleIndex--;
+                    } else {
+                        deleting = false;
+                        clearInterval(typingInterval);
+                        setTimeout(() => {
+                            typingInterval = setInterval(updateTitle, typingSpeed);
+                        }, pauseDuration);
+                    }
+                } else {
+                    if (titleIndex < titleText.length) {
+                        document.title = titleText.substring(0, titleIndex + 1);
+                        titleIndex++;
+                    } else {
+                        deleting = true;
+                        clearInterval(typingInterval);
+                        setTimeout(() => {
+                            typingInterval = setInterval(updateTitle, typingSpeed);
+                        }, pauseDuration);
+                    }
+                }
+            }
+
+            clearInterval(typingInterval);
+            typingInterval = setInterval(updateTitle, typingSpeed);
+        }
+
+        document.getElementById('enterOverlay').addEventListener('click', function() {
+            document.getElementById('enterOverlay').style.display = 'none';
+            document.getElementById('contentContainer').style.display = 'flex';
+            document.getElementById('bottomLeftText').style.display = 'block';
+
+            const video = document.getElementById('backgroundVideo');
+            video.style.filter = 'none';
+            video.muted = false; 
+            video.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            snowEffect(); 
+            fairyDustCursor();
+            startTypingEffect();
+        });
+    </script>
+</body>
+</html>
