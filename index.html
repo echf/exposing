@@ -3,41 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#FF0000">
+    <title>Personal Info - x</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
+            font-family: 'Fira Code', monospace;
+            background-color: #000;
+            color: #F00;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        .cmd {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            color: #F00;
+            font-family: 'Fira Code', monospace;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px);
+            width: 100%;
+            margin: 0 auto;
+        }
+        .details {
+            white-space: pre-line;
+            line-height: 0.5;
+            font-size: 14px;
+            color: #F00;
+            text-align: left;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: white;
-            color: black;
-            text-align: center;
         }
-        .message {
-            font-size: 24px;
+        .details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .details li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .details li::before {
+            content: "> ";
+            color: #F00;
             font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
-        .link {
-            display: block;
-            margin-top: 10px;
-            font-size: 18px;
-            color: #007bff;
+        .details a {
+            color: #F00;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .link:hover {
+        .details a:hover {
+            color: #FFAAAA;
             text-decoration: underline;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .cmd::after {
+            content: '|';
+            display: inline-block;
+            animation: blink 1s step-end infinite;
+            margin-left: 5px;
+            color: #F00;
+        }
+        .bg-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+            z-index: -1;
+        }
+        .foot {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: 12px;
+            color: #F00;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #000;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
+        }
+        .foot a {
+            color: #F00;
+            text-decoration: none;
+        }
+        .foot a:hover {
+            color: #FFAAAA;
+            text-decoration: underline;
+        }
+        .foot div { margin: 5px 0; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="message">
-        pastes soon,<br>
-        check out <a href="https://exposing.lol/x" class="link">https://exposing.lol/x</a>
+    <div class="bg-effect"></div>
+    <div class="cmd"><p>$ ls /home/exposing/</p></div>
+    <div class="main">
+        <section class="details">
+            <ul>
+                <li>15</li>
+                <li>he/him</li>
+                <li><a href="https://discord.com/users/1232777898973204574" target="_blank">discord</a></li>
+            </ul>
+        </section>
+    </div>
+    <div class="foot">
+        <div>Mail: <a href="mailto:pyarmor@exposing.lol">pyarmor@exposing.lol</a></div>
+        <div>LTC: <a href="https://litecoin.network">ltc1qp6sah4eq22s2tjugyzm2074hjym295rvxwa58r</a></div>
+        <div>XMR: <a href="https://monero.network">0x73f382dFb4971C519675cA5F1e622546F45982C1</a></div>
     </div>
 </body>
 </html>
