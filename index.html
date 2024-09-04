@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#800080">
+    <meta name="theme-color" content="#DA70D6">
     <title>x@exposing.lol</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Fira Code', monospace;
             background-color: #000;
-            color: #800080;
+            color: #DA70D6;
             text-align: center;
             margin: 0;
             overflow: hidden;
@@ -22,9 +22,9 @@
             top: 20px;
             left: 20px;
             font-size: 16px;
-            color: #800080;
+            color: #DA70D6;
             font-family: 'Fira Code', monospace;
-            text-shadow: 0 0 10px rgba(128, 0, 128, 0.5);
+            text-shadow: 0 0 10px rgba(218, 112, 214, 0.5);
         }
         .main {
             display: flex;
@@ -37,12 +37,14 @@
         }
         .details {
             white-space: pre-line;
-            line-height: 0.5;
+            line-height: 1.5;
             font-size: 14px;
-            color: #800080;
+            color: #DA70D6;
             text-align: left;
             margin: 0;
             padding: 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
         .details ul {
             list-style: none;
@@ -57,20 +59,20 @@
         }
         .details li::before {
             content: "> ";
-            color: #800080;
+            color: #DA70D6;
             font-weight: bold;
             position: absolute;
             left: 0;
             top: 0;
         }
         .details a {
-            color: #800080;
+            color: #DA70D6;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         .details a:hover {
-            color: #D8BFD8;
-            text-decoration: underline;
+            color: #FF00FF;
+            text-shadow: 0 0 10px #FF00FF;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -86,7 +88,7 @@
             display: inline-block;
             animation: blink 1s step-end infinite;
             margin-left: 5px;
-            color: #800080;
+            color: #DA70D6;
         }
         .bg-effect {
             position: absolute;
@@ -94,27 +96,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(128, 0, 128, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+            background: radial-gradient(circle, rgba(218, 112, 214, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
             z-index: -1;
+            animation: pulsate 5s infinite;
+        }
+        @keyframes pulsate {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
         }
         .foot {
             position: absolute;
             bottom: 0;
             width: 100%;
             font-size: 12px;
-            color: #800080;
+            color: #DA70D6;
             text-align: center;
             padding: 10px 0;
             background-color: #000;
             box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
         }
         .foot a {
-            color: #800080;
+            color: #DA70D6;
             text-decoration: none;
         }
         .foot a:hover {
-            color: #D8BFD8;
-            text-decoration: underline;
+            color: #FF00FF;
+            text-shadow: 0 0 10px #FF00FF;
         }
         .foot div { margin: 5px 0; }
     </style>
@@ -135,5 +143,19 @@
         <div>Mail: <a href="mailto:x@exposing.lol">x@exposing.lol</a></div>
         <div>LTC: <a href="https://litecoin.network">ltc1qp6sah4eq22s2tjugyzm2074hjym295rvxwa58r</a></div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const details = document.querySelector('.details');
+            setTimeout(() => {
+                details.style.opacity = '1';
+            }, 500);
+        });
+        document.addEventListener('mousemove', function (e) {
+            const bg = document.querySelector('.bg-effect');
+            const x = (window.innerWidth - e.pageX * 2) / 90;
+            const y = (window.innerHeight - e.pageY * 2) / 90;
+            bg.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        });
+    </script>
 </body>
 </html>
