@@ -3,40 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found</title>
+    <title>404 Page Not Found</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
             margin: 0;
             padding: 0;
-            height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
         }
         .container {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 8px;
-        }
-        h1, p {
-            color: #ff4c4c; 
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            font-size: 100px;
+            font-size: 90px;
             margin: 0;
+            color: #ff6b6b;
+            text-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b, 0 0 40px #ff6b6b;
         }
         p {
             font-size: 18px;
-            margin: 20px 0 0;
+            color: #333;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         a {
-            color: #ff4c4c;
+            color: #ff6b6b;
             text-decoration: none;
             font-weight: bold;
+            text-shadow: 0 0 10px #ff6b6b;
         }
         a:hover {
             text-decoration: underline;
@@ -45,8 +47,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>404</h1>
-        <p>The page you are looking for cannot be found.</p>
+        <h1>404 - Page Not Found</h1>
+        <p>The page you are looking for might have been removed or is temporarily unavailable.</p>
         <p><a href="/">Return to homepage</a></p>
     </div>
 </body>
