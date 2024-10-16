@@ -14,32 +14,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            color: #DA70D6;
+            font-size: 24px;
+            text-align: center;
+            position: relative;
         }
-        .play-button {
-            background-color: #DA70D6;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
             z-index: 1;
         }
     </style>
 </head>
 <body>
-    <audio id="clown-audio" autoplay loop muted>
+    <div class="overlay">Click to Enter</div>
+    <audio id="clown-audio">
         <source src="assets/clown.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button class="play-button" onclick="unmuteAudio()">Play Audio</button>
 
     <script>
-        function unmuteAudio() {
+        document.querySelector('.overlay').addEventListener('click', function() {
             const audio = document.getElementById('clown-audio');
-            audio.muted = false;
             audio.play();
-            document.querySelector('.play-button').style.display = 'none';
-        }
+            this.style.display = 'none';
+        });
     </script>
 </body>
 </html>
