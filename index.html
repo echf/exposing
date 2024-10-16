@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>skid central!</title>
+    <title>Image and Music</title>
     <style>
         body {
             margin: 0;
@@ -15,12 +15,31 @@
             justify-content: center;
             align-items: center;
         }
+        .play-button {
+            background-color: #DA70D6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
+    <audio id="clown-audio" autoplay loop muted>
         <source src="assets/clown.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <button class="play-button" onclick="unmuteAudio()">Play Audio</button>
+
+    <script>
+        function unmuteAudio() {
+            const audio = document.getElementById('clown-audio');
+            audio.muted = false;
+            audio.play();
+            document.querySelector('.play-button').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
