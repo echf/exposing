@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arch central!</title>
+    <meta name="description" content="IP: 95.116.140.232, Country: Germany, State: Niedersachsen, City: Delligsen, Latitude: 51.9412, Longitude: 9.8027, ISP: Telefonica Deutschland GmbH">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('assets/jews/tubby.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #DA70D6;
+            font-size: 24px;
+            text-align: center;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">hi im arch</div>
+    <audio id="clown-audio">
+        <source src="assets/clown.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.querySelector('.overlay').addEventListener('click', function() {
+            const audio = document.getElementById('clown-audio');
+            audio.play();
+            this.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
