@@ -35,11 +35,12 @@
             z-index: 1;
             opacity: 1;
             transition: opacity 1s ease;
+            cursor: pointer; 
         }
         .spinny {
             animation: spin 5s linear infinite;
             margin-top: 20px;
-            display: none;
+            display: none; 
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -48,8 +49,8 @@
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="enter-text">click</div>
+    <div class="overlay" id="overlay">
+        <div class="enter-text">click anywhere to enter</div>
         <div class="spinny">
             IP: 95.116.140.232<br>
             Country: Germany<br>
@@ -65,7 +66,7 @@
         Your browser does not support the audio element.
     </audio>
     <script>
-        document.querySelector('.enter-text').addEventListener('click', function() {
+        document.getElementById('overlay').addEventListener('click', function() {
             const overlay = document.querySelector('.overlay');
             const audio = document.getElementById('clown-audio');
             audio.play();
