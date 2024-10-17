@@ -18,6 +18,7 @@
             font-size: 24px;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
         .overlay {
             position: absolute;
@@ -28,24 +29,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             z-index: 1;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        .spinny {
+            animation: spin 5s linear infinite;
+            margin-top: 20px;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="overlay">enter nigger</div>
+    <div class="overlay">
+        <div class="enter-text">click</div>
+        <div class="spinny">
+            IP: 95.116.140.232<br>
+            Country: Germany<br>
+            State: Niedersachsen<br>
+            City: Delligsen<br>
+            Latitude: 51.9412<br>
+            Longitude: 9.8027<br>
+            ISP: Telefonica Deutschland GmbH
+        </div>
+    </div>
     <audio id="clown-audio">
         <source src="assets/clown.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
     <script>
-        document.querySelector('.overlay').addEventListener('click', function() {
+        document.querySelector('.enter-text').addEventListener('click', function() {
+            const overlay = document.querySelector('.overlay');
             const audio = document.getElementById('clown-audio');
             audio.play();
-            this.style.display = 'none';
+            document.querySelector('.spinny').style.display = 'block';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000);
         });
     </script>
 </body>
