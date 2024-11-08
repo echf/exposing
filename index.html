@@ -3,51 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>skid central!</title>
-    <meta name="description" content="IP: 95.116.140.232, Country: Germany, State: Niedersachsen, City: Delligsen, Latitude: 51.9412, Longitude: 9.8027, ISP: Telefonica Deutschland GmbH">
+    <title>py.lol</title>
     <style>
-        body {
+        * {
             margin: 0;
-            height: 100vh;
-            background-image: url('assets/media/skid.jpg');
-            background-size: cover;
-            background-position: center;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #DA70D6;
-            font-size: 24px;
-            text-align: center;
-            position: relative;
+            overflow: hidden;
         }
-        .overlay {
+
+        .wave-background {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            animation: waveAnimation 10s infinite linear;
+            background-size: 400% 400%;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .center-text {
+            z-index: 10;
             color: white;
-            z-index: 1;
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="overlay">enter nigger</div>
-    <audio id="clown-audio">
-        <source src="assets/clown.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
-    <script>
-        document.querySelector('.overlay').addEventListener('click', function() {
-            const audio = document.getElementById('clown-audio');
-            audio.play();
-            this.style.display = 'none';
-        });
-    </script>
+    <div class="wave-background"></div>
+
+    <div class="center-text">
+        py.lol
+    </div>
+
 </body>
 </html>
