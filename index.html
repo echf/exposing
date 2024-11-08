@@ -1,1 +1,65 @@
-ss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>py.lol</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wave-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            animation: waveAnimation 10s infinite linear;
+            background-size: 400% 400%;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .center-text {
+            z-index: 10;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wave-background"></div>
+
+    <div class="center-text">
+        py.lol
+    </div>
+
+</body>
+</html>
