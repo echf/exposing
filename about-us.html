@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:url" content="https://exposing.lol/about-us">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="exposing.lol - About Us">
-    <meta property="og:description" content="in progress...">
+    <meta property="og:title" content="exposing.lol - about Us">
+    <meta property="og:description" content="exposing.lol">
     <title>exposing.lol - About Us</title>
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
@@ -40,7 +40,7 @@
             position: relative;
             text-align: center;
             color: #9b59b6;
-            font-size: 48px;
+            font-size: 36px;
             letter-spacing: 2px;
             font-family: 'Courier New', monospace;
             z-index: 1;
@@ -48,6 +48,8 @@
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             backdrop-filter: blur(8px);
+            max-width: 90%;
+            margin: auto;
         }
 
         .controls {
@@ -71,13 +73,25 @@
 <body>
     <div id="particles-js"></div>
     <div class="content">
-        <div id="typewriter">in progress...</div>
+        <div id="typewriter"></div>
     </div>
     <div class="controls">
         <a href="./">back to home</a>
     </div>
 
     <script>
+        var typewriter = new Typewriter('#typewriter', {
+            loop: true,
+            delay: 50, 
+        });
+
+        typewriter
+            .typeString("We take down malicious webhooks/servers")
+            .pauseFor(1000)
+            .typeString("associated with token grabbers and RATs.")
+            .pauseFor(1000)
+            .start();
+
         particlesJS('particles-js', {
             "particles": {
                 "number": {
