@@ -20,7 +20,7 @@
         #text span:nth-child(2){color:purple;}
         @keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
         .showText{display:block;animation:fadeIn 2s forwards;}
-        #discord{display:none;font-size:20px;margin-top:20px;color:white;text-decoration:none;opacity:0;animation:fadeInDiscord 2s forwards 2s;}
+        #discord{display:none;font-size:50px;font-weight:bold;margin-top:20px;color:white;text-decoration:none;opacity:0;animation:fadeInDiscord 2s forwards 2s;text-shadow:0 0 10px purple,0 0 20px purple,0 0 30px purple;}
         #discord:hover{text-decoration:underline;}
         @keyframes fadeInDiscord{0%{opacity:0;}100%{opacity:1;}}
     </style>
@@ -28,7 +28,7 @@
 <body>
     <img id="eye" src="/assets/eye.png" alt="eye">
     <div id="text"><span>expo</span><span>sing</span></div>
-    <a id="discord" href="https://discord.gg/exposing" target="_blank">discord</a>
+    <a id="discord" href="https://discord.gg/exposing" target="_blank">Discord</a>
     <script>
         setTimeout(function(){
             document.getElementById('eye').style.display = 'none';
