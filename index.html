@@ -15,12 +15,12 @@
         #eye{width:150px;height:150px;animation:spin 2s linear infinite,fadeOut 5s forwards;transform-origin:center;}
         @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
         @keyframes fadeOut{0%{opacity:1;}100%{opacity:0;}}
-        #text{display:none;font-size:50px;font-weight:bold;text-shadow:0 0 10px purple,0 0 20px purple,0 0 30px purple;}
+        #text{display:none;font-size:50px;font-weight:bold;text-shadow:0 0 5px rgba(128, 0, 128, 0.7),0 0 10px rgba(128, 0, 128, 0.5),0 0 15px rgba(128, 0, 128, 0.3);}
         #text span:nth-child(1){color:white;}
-        #text span:nth-child(2){color:purple;}
+        #text span:nth-child(2){color:#d300d3;}
         @keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
         .showText{display:block;animation:fadeIn 2s forwards;}
-        #discord{display:none;font-size:15px;font-weight:bold;margin-top:20px;color:white;text-decoration:none;opacity:0;animation:fadeInDiscord 2s forwards 2s;text-shadow:0 0 10px purple,0 0 20px purple,0 0 30px purple;}
+        #discord{display:none;font-size:15px;font-weight:bold;margin-top:20px;color:white;text-decoration:none;opacity:0;animation:fadeInDiscord 2s forwards 2s;text-shadow:0 0 5px rgba(128, 0, 128, 0.7),0 0 10px rgba(128, 0, 128, 0.5);}
         #discord:hover{text-decoration:underline;}
         @keyframes fadeInDiscord{0%{opacity:0;}100%{opacity:1;}}
     </style>
