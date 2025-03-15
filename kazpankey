@@ -1,1 +1,121 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaz Pankey</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      line-height: 1.5;
+      white-space: pre;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .box {
+      border: 1px solid white;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .header {
+      font-weight: bold;
+      text-align: center;
+    }
+    .content {
+      padding-left: 20px;
+    }
+    .line {
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+<div class="line">
+  ╔──────────────────────────────────────────────────────────────────────────────๑◥◣◆◢◤๑──────────────────────────────────────────────────────────────────────────────╗
+</div>
+<div class="section">
+  <div class="box">
+    <div class="header">[ REASON ]</div>
+    <div class="content">
+      Kaz Pankey targeted minors on the gaming platform Roblox. <br>
+      Through malicious tactics such as ratting and infostealing, he exploited children by accessing their personal information. <br>
+      Kaz also took webcam images of the minors and used these visuals to extort them, demanding material in return for not sharing the compromising images. <br>
+      He would go to the Xeno Executor Discord server, where he would message users and send them his fake executor in an attempt to gain access to their devices. <br>
+      His goal was to gain access to their PCs by using the RAT XWorm and the infostealer Red Tiger.
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="box">
+    <div class="header">[ PRIVATE DATA ]</div>
+    <div class="content">
+      First name: Kaz <br>
+      Surname: Pankey <br>
+      Age: 15 <br>
+      DOB: 05/1/2009 <br>
+      Phone: +19176731248 <br>
+      Street: 3216 100th St 2 <br>
+      City: East Elmhurst, NY <br>
+      Postcode: 11368-1836 <br>
+      Country: United States <br>
+      Discord: sentenceyou (1345207654204837999) <br>
+      Most Commonly Used Password: kaz1212! <br>
+      Evidence: <a href="https://x.xxxx.rip/x/3ecthu4s.png" style="color: white;">https://x.xxxx.rip/x/3ecthu4s.png</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="box">
+    <div class="header">[ MAIL INFORMATION ]</div>
+    <div class="content">
+      Email: kazpankey2@gmail.com <br>
+      Connected Services: <br>
+      ├── GitHub <br>
+      ├── Google <br>
+      ├── Instagram <br>
+      ├── Spotify <br>
+      ├── Yahoo <br>
+      ├── Discord <br>
+      ├── Amazon <br>
+      └── Chess <br>
+      <br>
+      Email: kazpankey@icloud.com <br>
+      Connected Services: <br>
+      ├── GitHub <br>
+      ├── Instagram <br>
+      ├── Microsoft <br>
+      ├── Spotify <br>
+      ├── Twitter <br>
+      ├── Yahoo <br>
+      ├── Discord <br>
+      ├── Amazon <br>
+      ├── Quora <br>
+      └── Replit
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="box">
+    <div class="header">[ PARENT INFORMATION ]</div>
+    <div class="content">
+      Father: Peter Pankey <br>
+      Street: 3216 100th St 2 <br>
+      City: East Elmhurst, NY <br>
+      Postcode: 11368-1836 <br>
+      Country: United States <br>
+      Last Digits On Credit Card: 1751
+    </div>
+  </div>
+</div>
+<div class="line">
+  ╚──────────────────────────────────────────────────────────────────────────────๑◢◤◆◥◣๑──────────────────────────────────────────────────────────────────────────────╝
+</div>
+</body>
+</html>
